@@ -16,7 +16,7 @@ Decisions made:
 3. Send original logo file (winged-H + round mud-flap badge) and original real photos (only 3 of 6 posts are real photos).
 
 ## Branding
-- Colors: bright dumpster blue (buttons), forest green (header/footer), metallic gold (accents, thin divider lines), warm cream backgrounds (matches Instagram graphics), white.
+- Colors (owner's palette): Cream #F3EAE0, Forest #233B2C, Olive #35442F (buttons), Sage #A5AC8B, Gold #C6A66B (lines/logo on dark only). Details: design-direction.md §2a.
 - Type: elegant serif headlines with italic accent words (as in "Find Your *Perfect Fit.*"), clean sans-serif body.
 - Taglines: "Your Project. Our Priority." · "Find Your Perfect Fit." · "The right size for every project." · "Dumpster Solutions For Every Project."
 - Photos: real photos as "real work"; designed/AI graphics only as illustrations, never as job photos. No stock.
