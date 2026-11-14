@@ -22,6 +22,8 @@ Decisions made:
 - Photos: real photos as "real work"; designed/AI graphics only as illustrations, never as job photos. No stock.
 
 ## Site map (pages)
+**Phase 1 launch:** pages 1, 2, 3, 6, 7. **Phase 2 (when paperwork is ready):** pages 4, 5. See design-direction.md §5a.
+
 1. **Home / Request a Quote** (`/`)
 2. **Dumpster Sizes & Pricing** (`/dumpster-sizes`)
 3. **Construction & Demolition Debris** (`/construction-demolition`)

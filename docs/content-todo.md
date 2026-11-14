@@ -10,13 +10,13 @@ Edit most of these in `src/site.ts`. Search the code for `TODO` to find the rest
 
 ## Services (only list what you actually provide)
 - [ ] Confirm: Roll-off rentals, C&D debris, Dirt & concrete, Residential & commercial cleanouts
-- [ ] Which sizes you actually own (10 / 15 / 20 / 30 / 40 yd)
+- [x] Sizes: 10 / 15 / 20 / 30 / 40 yd (confirmed)
 - [ ] Dimensions per size (`sizes[].dims`)
 - [ ] Prices, or keep "request a quote" (`sizes[].price`)
 - [ ] Weight limits / overage fees, rental period, extension fee
 - [ ] Prohibited items list (check with your disposal facility)
 
-## LEED / Green Halo
+## LEED / Green Halo — PHASE 2 (owner: yes, later; no certificates yet)
 - [ ] What LEED documentation you actually provide (weight tickets? diversion %? PDF summary?)
 - [ ] Do you upload tickets into Green Halo for customers, or only supply them?
 - [ ] Facilities you haul to (for diversion claims)
@@ -30,7 +30,7 @@ Edit most of these in `src/site.ts`. Search the code for `TODO` to find the rest
 - [ ] Delivery lead time
 
 ## Photos & logo (put in `public/images/`)
-- [ ] `logo.png` — green/gold winged-H (then update `src/components/Logo.astro`)
+- [ ] Logo: transparent PNG/SVG of winged-H, round badge, horizontal wordmark + one-colour winged-H (have: screenshot only)
 - [ ] `hero.jpg` — truck/blue dumpster on a job site
 - [ ] `work-1.jpg` … `work-6.jpg` — Instagram job photos (originals, not screenshots)
 
