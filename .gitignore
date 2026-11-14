@@ -2,3 +2,7 @@ node_modules/
 dist/
 .astro/
 .DS_Store
+shots/
+.taste-skill/chrome-*/
+.taste-skill/consistency/
+.taste-skill/gate/
