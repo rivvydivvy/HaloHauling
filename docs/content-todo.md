@@ -30,9 +30,8 @@ Edit most of these in `src/site.ts`. Search the code for `TODO` to find the rest
 - [ ] Delivery lead time
 
 ## Photos & logo (put in `public/images/`)
-- [ ] Logo: transparent PNG/SVG of winged-H, round badge, horizontal wordmark + one-colour winged-H (have: screenshot only)
-- [ ] `hero.jpg` — truck/blue dumpster on a job site
-- [ ] `work-1.jpg` … `work-6.jpg` — Instagram job photos (originals, not screenshots)
+- [x] Logo: transparent PNGs received (docs/reference/brand/). SVG optional later.
+- [x] 9 real photos received and assigned (docs/reference/photos/, see design-direction.md §6)
 
 ## Launch
 - [ ] Connect repo to Cloudflare Pages (build: `npm run build`, output: `dist`)

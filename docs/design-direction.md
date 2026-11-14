@@ -15,7 +15,7 @@ Planning only. Nothing here is built yet. Produced with the taste-skill design r
 | Colours | **Your chosen palette** (see §2a) | Your palette, reference: [reference/brand/palette.png](reference/brand/palette.png). The only blue on the site is your real dumpsters in the photos, so they pop against the greens. |
 | Type | **Newsreader** (serif headings) + **Hanken Grotesk** (body), both free Google Fonts | Skill dealt a slab font first; switched to its serif option because your Instagram posts already use an elegant serif ("Find Your *Perfect Fit.*"). |
 | Corners | Soft | Default for a service |
-| Hero | **Full-bleed photo** with the words in a solid cream box on the calm side (sky) | Truck-with-A28 photo has a big clear sky. No dark overlays or gradients. |
+| Hero | ✅ **Split (half-width), owner's choice:** text on the left (5 of 12 columns), photo on the right (628×716, rounded corners), both fully on the first screen. One small flat card on the photo's lower-left with a hard fact ("10 to 40 yards · hook-lift delivery"). On phones: text first, photo under it. | Works with the ~1,450px photos (shown at 628px, so sharp on retina). The truck/A28 photo is near-square, so it fits the tall frame. |
 | Nav | Centred links, logo left, "Get a quote" button right; full-screen menu on phones; sticky quote/call bar at the bottom on phones | |
 | Buttons | Tonal (soft filled) | |
 | Rhythm | One band of 1–2 sections on the darker cream surface | Separates the contractor/documentation part |
@@ -47,11 +47,12 @@ Contrast checked (WCAG; 4.5 needed for text):
 | Round badge (HALO HAULING) | Footer, Instagram/Google profile, share image, truck/shirts |
 | Horizontal wordmark with truck | Closing section or share image only. Too detailed for the header; truck and trees disappear at small sizes. |
 
-**Logo files needed for the web:** the current logos are images with a dark green background baked in, and that green doesn't quite match Forest `#233B2C`, so a box edge would show. Ask your designer for:
-1. **Transparent PNG** (or better, **SVG**) of each version
-2. A **one-colour** version of the winged-H (gold or cream) for small sizes and the favicon. The 3D shine turns to mush under 48px.
-
-If you can't get those, I can cut out the background, but the result is lower quality.
+✅ **Logo files received** (transparent background), split into web-ready PNGs in [reference/brand/](reference/brand/):
+- `logo-mark-winged-h.png` (439×313): header, next to "HALO HAULING" set in the heading font
+- `logo-badge-round.png` (397×397): footer, favicon source, social profile, share image
+- `logo-wordmark-truck.png` (1193×531): closing section / share image only
+- Tested on Cream and Forest: all three read well on both. The winged-H still reads at 48px; for the browser-tab favicon (16–32px) use the round badge or a simplified H.
+- Still nice to have later: an SVG version from the designer for perfectly sharp edges.
 
 ## 3. Voice
 **Facts only, trade words.** Short, plain sentences with real nouns: yards, tons, driveway, swap, weight ticket, hook-lift. "You" for the customer, "we" for the work.
@@ -97,7 +98,7 @@ Recycling, LEED reports and Green Halo support are planned but **not ready**, so
 ### 6a. Where each photo goes (home page)
 | Slot | Photo | Why |
 |---|---|---|
-| Hero (full-bleed) | `ig-a28-truck-logo-mudflap` | Your truck with the **Halo Hauling mud-flap logo**. Big clear sky top-left for the words box. |
+| Hero (split, right half) | `ig-a28-truck-logo-mudflap` | Your truck with the **Halo Hauling mud-flap logo**; near-square, fits the tall frame |
 | Services | `ig-warehouse-dock` | 3 boxes at a loading dock: shows commercial/business service |
 | Sizes: *Find your perfect fit* | `residential-dumpster-rental` (tall portrait) beside the size list | Tall box at the curb, golden light |
 | How it works (photo-chapters) 1. We drop it | `ig-a12-driveway-swaploader` | Hook-lift setting a box in a driveway, boards under the rollers |
@@ -111,9 +112,9 @@ Inner pages reuse these: Sizes → hero-dumpster + quote-low-sided; C&D → conc
 
 ### 6b. Fixes needed before they go on the site
 1. ✅ **Stickers removed** (owner confirmed these are Halo boxes): the "RENT ME" sticker on `hero-dumpster` and the "KELLY" sticker on `dumpster-delivery-pickup` are retouched out. Originals stay in git history.
-2. **Real Halo jobs?** Several photos look edited or AI-enhanced: smooth textures, odd stencil text like "TARE 5.200 MAX 12.500". The plan only uses photos of your actual equipment and jobs. Please confirm each one; any that aren't real get dropped or labelled as an example.
-3. **Size:** all photos are about 1450px wide, but a full-width hero needs **1920px or more** to stay sharp on big screens. Best fix: send the **original phone files** (usually 4000px+). Fallback: switch the hero to a half-width "split" layout that works at 1450px.
-4. **Logo not received.** The 3 PNGs uploaded were Instagram photos (now named `ig-*`). Still need transparent PNG/SVG logo files.
+2. ✅ **All 9 confirmed real** Halo Hauling equipment and jobs (owner).
+3. ✅ **Size:** no originals, so the plan uses the **half-width split hero**. Full-width uses (how-it-works chapters, closing photo) stay at about 1,450px: fine on normal screens, slightly soft on large retina displays. Original phone files can replace them any time with no design change.
+4. ✅ **Logo received**, see §2b.
 5. All photos are reused only once per page (skill rule: no photo twice).
 
 ### 6c. Still useful later
