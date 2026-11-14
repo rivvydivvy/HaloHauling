@@ -6,12 +6,12 @@ New Bay Area roll-off dumpster business (owners: you + your wife). Only presence
 Decisions made:
 - **Static site in GitHub** (Astro + plain CSS), free hosting on Cloudflare Pages, auto-deploys on push.
 - **Domain: gohalohauling.com** (the one you own). Emails: info@ / dispatch@ / billing@gohalohauling.com via Google Workspace (dispatch + billing can alias to one inbox at first).
-- **Repo:** you create empty `HaloHauling/website` on github.com (create free org "HaloHauling" first if needed); I attach and push.
+- **Repo:** GitHub repo `rivvydivvy/HaloHauling` (created).
 - **Instagram:** allow instagram.com in this environment so I can try to review it (Instagram often blocks bots — fallback: you upload the 6 job photos + logo).
 
 ## Step 0 — Setup (needs you)
-1. Approve adding `www.instagram.com` + `instagram.com` to the environment allowlist; I review profile, captions, hashtags, photos.
-2. Create `HaloHauling/website` (empty, private OK). I attach it with push access.
+1. Instagram shows a login wall to bots — upload screenshots of bio + grid instead.
+2. ~~Create GitHub repo~~ Done: rivvydivvy/HaloHauling.
 3. Send logo file (green/gold winged-H) and the 6 real job photos.
 
 ## Branding
@@ -61,7 +61,7 @@ Per-page titles + meta descriptions, LocalBusiness schema, sitemap, Google Busin
 
 ## Repo structure
 ```
-website/
+HaloHauling/
   README.md            # how to edit, deploy, from any device
   docs/plan.md         # this plan
   docs/content-todo.md # facts you must confirm (prices, cities, phone, FAQ answers)
