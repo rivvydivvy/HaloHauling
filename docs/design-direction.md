@@ -62,15 +62,15 @@ If you can't get those, I can cut out the background, but the result is lower qu
 ## 4. Home page, screen by screen (1440×900 desktop)
 | # | Section | One idea | Picture | Screens |
 |---|---|---|---|---|
-| 1 | Hero | Bay Area roll-off dumpsters, quote in one click | Truck carrying A28 (real) | 1 |
+| 1 | Hero | Bay Area roll-off dumpsters, quote in one click | Truck with A28 + Halo mud flap | 1 |
 | 2 | Services | 5 services, one line each (roll-off rentals, C&D debris, dirt & concrete, cleanouts, hauling & disposal) + "one box or several, one-time or ongoing" | Warehouse dock with 3 boxes (real) | 1 |
 | 3 | Sizes — *Find your perfect fit* | 10 / 15 / 20 / 30 / 40 yd (or your real sizes), best use, "price on request" | Size list (allowed picture-less) | 1 |
-| 4 | How it works (**photo-chapters moment**) | 4 steps: tell us → we drop it → you fill it → we haul it | 4 real photos, one per step | 3 (scroll) |
+| 4 | How it works (**photo-chapters moment**) | Tell us (in the intro line) → we drop it → you fill it → we haul it | 3 photos, one per chapter | 3 (scroll) |
 | 5 | Contractors *(dark forest band)* | Swaps on schedule, multiple boxes per job, weight tickets on request. LEED/Green Halo added here **later** | Loaded dumpster on a job site (**picture-develops moment**) | 1 |
 | 6 | Service area | Bay Area, the cities you confirm | Still map of the South Bay/Bay Area with your cities | 1 |
 | 7 | FAQ | 5 questions | none (allowed) | 1 |
 | 8 | Quote form | size, material, delivery address, date, + "Prefer to talk? Instagram @halohauling" | A12 driveway drop (real) beside form | 1–2 |
-| 9 | Closing + footer | Get a quote | Your yard / row of boxes | 1 |
+| 9 | Closing + footer | Get a quote | Tall C&D box, open lot | 1 |
 
 "Who it's for" (homeowners / contractors / businesses) is folded into Services instead of its own section. The skill says short blocks get merged.
 
@@ -92,22 +92,36 @@ Recycling, LEED reports and Green Halo support are planned but **not ready**, so
 - **Phase 2 (when you can provide the paperwork):** add LEED Recycling Reports + Green Halo Reporting Support pages, the "C&D Recycling • LEED Documentation • Green Halo Reporting Support" line, and the documentation question on the quote form. The pages are designed now so adding them later is a small change.
 - Sizes confirmed: **10, 15, 20, 30, 40 yards.**
 
-## 6. Photographs
-**Status:** owner has 9 photos + logo in a Mac folder "HaloHauling Web Images". Not yet in the repo. They'll be checked against the slots below once uploaded.
+## 6. Photographs (9 received, in [reference/photos/](reference/photos/))
 
-The skill wants **1–2 real photos per screen**; the home page needs **about 9 different ones** and no photo used twice. You have **3** usable (truck A28, driveway A12, warehouse dock). Shot list for phone photos (landscape, daylight, no customer faces or house numbers, wipe the boxes first):
+### 6a. Where each photo goes (home page)
+| Slot | Photo | Why |
+|---|---|---|
+| Hero (full-bleed) | `ig-a28-truck-logo-mudflap` | Your truck with the **Halo Hauling mud-flap logo**. Big clear sky top-left for the words box. |
+| Services | `ig-warehouse-dock` | 3 boxes at a loading dock: shows commercial/business service |
+| Sizes: *Find your perfect fit* | `residential-dumpster-rental` (tall portrait) beside the size list | Tall box at the curb, golden light |
+| How it works (photo-chapters) 1. We drop it | `ig-a12-driveway-swaploader` | Hook-lift setting a box in a driveway, boards under the rollers |
+| 2. You fill it | `concrete-debris-removal` | Box full of broken concrete in a driveway |
+| 3. We haul it | `dumpster-delivery-pickup` | Truck at the curb with a C&D box, fenced job site |
+| Contractors band (picture-develops) | `dirt-removal-hauling` | Two boxes of dirt on one job with cones: matches your "multiple dumpsters, one job" post |
+| Quote form | `quote-low-sided-dumpster` | Low-sided box at a house, empty and ready |
+| Closing | `hero-dumpster` | Tall C&D box in an open lot, wide sky (after the sticker fix below) |
 
-1. Row of empty boxes, each size, in your yard (sizes section / closing)
-2. Customer call / you at the truck with a tablet or phone (step 1)
-3. Hook-lift setting a box down on boards in a driveway (step 2)
-4. Box being loaded with debris on a real job (step 3)
-5. Truck pulling away with a full box (step 4)
-6. Full C&D box on a construction site (contractor band)
-7. Close-up of a weight ticket / recycling receipt, customer info blurred (documentation)
-8. Dirt or concrete load (dirt & concrete service)
-9. Optional: you two with the truck (an "about us" line, only if you want to be on the site)
+Inner pages reuse these: Sizes → hero-dumpster + quote-low-sided; C&D → concrete + dumpster-delivery-pickup; Service Areas → residential-dumpster-rental; Contact → ig-a12-driveway.
 
-Also need: **original logo file** (PNG/SVG) and full-size originals of the 3 existing photos.
+### 6b. Fixes needed before they go on the site
+1. **Other companies' stickers:**
+   - `hero-dumpster` has a yellow **"RENT ME" sticker with a phone number**.
+   - `dumpster-delivery-pickup` has a yellow/red **"KELLY..." brand sticker**.
+
+   If these boxes aren't Halo Hauling's, a customer could call the wrong company. Plan: crop or retouch the stickers out. Confirm these are your boxes or rented ones.
+2. **Real Halo jobs?** Several photos look edited or AI-enhanced: smooth textures, odd stencil text like "TARE 5.200 MAX 12.500". The plan only uses photos of your actual equipment and jobs. Please confirm each one; any that aren't real get dropped or labelled as an example.
+3. **Size:** all photos are about 1450px wide, but a full-width hero needs **1920px or more** to stay sharp on big screens. Best fix: send the **original phone files** (usually 4000px+). Fallback: switch the hero to a half-width "split" layout that works at 1450px.
+4. **Logo not received.** The 3 PNGs uploaded were Instagram photos (now named `ig-*`). Still need transparent PNG/SVG logo files.
+5. All photos are reused only once per page (skill rule: no photo twice).
+
+### 6c. Still useful later
+- A box being loaded on a job, you two with the truck (only if you want to be on the site), a weight ticket (blurred) for phase 2 LEED/Green Halo pages.
 
 ## 7. Facts still empty (the skill won't invent them)
 Phone · cities · prices or "on request" · rental period · weight limits · delivery lead time · ongoing service for businesses (yes/no now?). Tracked in [content-todo.md](content-todo.md).
