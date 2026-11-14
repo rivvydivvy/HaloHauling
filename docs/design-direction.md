@@ -110,11 +110,7 @@ Recycling, LEED reports and Green Halo support are planned but **not ready**, so
 Inner pages reuse these: Sizes → hero-dumpster + quote-low-sided; C&D → concrete + dumpster-delivery-pickup; Service Areas → residential-dumpster-rental; Contact → ig-a12-driveway.
 
 ### 6b. Fixes needed before they go on the site
-1. **Other companies' stickers:**
-   - `hero-dumpster` has a yellow **"RENT ME" sticker with a phone number**.
-   - `dumpster-delivery-pickup` has a yellow/red **"KELLY..." brand sticker**.
-
-   If these boxes aren't Halo Hauling's, a customer could call the wrong company. Plan: crop or retouch the stickers out. Confirm these are your boxes or rented ones.
+1. ✅ **Stickers removed** (owner confirmed these are Halo boxes): the "RENT ME" sticker on `hero-dumpster` and the "KELLY" sticker on `dumpster-delivery-pickup` are retouched out. Originals stay in git history.
 2. **Real Halo jobs?** Several photos look edited or AI-enhanced: smooth textures, odd stencil text like "TARE 5.200 MAX 12.500". The plan only uses photos of your actual equipment and jobs. Please confirm each one; any that aren't real get dropped or labelled as an example.
 3. **Size:** all photos are about 1450px wide, but a full-width hero needs **1920px or more** to stay sharp on big screens. Best fix: send the **original phone files** (usually 4000px+). Fallback: switch the hero to a half-width "split" layout that works at 1450px.
 4. **Logo not received.** The 3 PNGs uploaded were Instagram photos (now named `ig-*`). Still need transparent PNG/SVG logo files.
