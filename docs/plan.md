@@ -7,17 +7,18 @@ Decisions made:
 - **Static site in GitHub** (Astro + plain CSS), free hosting on Cloudflare Pages, auto-deploys on push.
 - **Domain: gohalohauling.com** (the one you own). Emails: info@ / dispatch@ / billing@gohalohauling.com via Google Workspace (dispatch + billing can alias to one inbox at first).
 - **Repo:** GitHub repo `rivvydivvy/HaloHauling` (created).
-- **Instagram:** allow instagram.com in this environment so I can try to review it (Instagram often blocks bots — fallback: you upload the 6 job photos + logo).
+- **Instagram:** reviewed from your screenshots — see [instagram-review.md](instagram-review.md).
 
 ## Step 0 — Setup (needs you)
-1. Instagram shows a login wall to bots — upload screenshots of bio + grid instead.
+1. ~~Instagram screenshots~~ Done.
 2. ~~Create GitHub repo~~ Done: rivvydivvy/HaloHauling.
-3. Send logo file (green/gold winged-H) and the 6 real job photos.
+3. Send original logo file (winged-H + round mud-flap badge) and original real photos (only 3 of 6 posts are real photos).
 
 ## Branding
-- Colors: bright dumpster blue (primary/CTA), dark green + gold (from logo, header/footer/accents), white/light gray backgrounds.
-- Taglines: "Your Project. Our Priority." and "Find Your Perfect Fit."
-- Real photos only, no stock.
+- Colors: bright dumpster blue (buttons), forest green (header/footer), metallic gold (accents, thin divider lines), warm cream backgrounds (matches Instagram graphics), white.
+- Type: elegant serif headlines with italic accent words (as in "Find Your *Perfect Fit.*"), clean sans-serif body.
+- Taglines: "Your Project. Our Priority." · "Find Your Perfect Fit." · "The right size for every project." · "Dumpster Solutions For Every Project."
+- Photos: real photos as "real work"; designed/AI graphics only as illustrations, never as job photos. No stock.
 
 ## Site map (pages)
 1. **Home / Request a Quote** (`/`)
@@ -35,12 +36,12 @@ Decisions made:
 ### Home page sections
 1. Hero: **HALO HAULING** / *Roll-Off Dumpster Rentals & Construction Debris Solutions* / *C&D Recycling • LEED Documentation • Green Halo Reporting Support*; secondary line "Your Project. Our Priority."; buttons Get a Quote / Message Us on Instagram; real truck/dumpster photo.
 2. Trust bar: Roll-Off Dumpsters | Construction & Demolition | Dirt & Concrete | Residential & Commercial Cleanouts
-3. Services — 4 cards (2 lines each: what / who)
+3. Services — 5 cards (2 lines each: what / who): + **Debris Hauling & Disposal** (from Instagram). Mention multiple dumpsters per job (e.g. dirt + C&D).
 4. Find Your Perfect Fit — size guide 10/15/20/30/40-yd with use cases; "Not sure? Message us" (no guessed prices)
 5. How it works — 3 steps
 6. Who it's for — Homeowners / Contractors / Businesses
 7. Service area — "Bay Area, CA" (San Jose only once confirmed)
-8. Real work — 6 photos + link to Instagram
+8. Real work — the 3 real photos (A12 driveway drop, A28 truck, yard) + more as you get them; link to Instagram
 9. FAQ — cost, rental length, allowed/prohibited items, driveway protection, delivery speed (answers marked TBD for you to fill)
 10. **Quote form** (see below) + "Prefer to talk? Message us on Instagram @halohauling"
 
@@ -72,7 +73,7 @@ HaloHauling/
 ```
 
 ## Open items you must confirm (tracked in content-todo.md)
-Phone number, cities served, prices/rental period/weight limits, which sizes you actually own, which services you really offer (dirt/concrete? LEED reports?), delivery lead time.
+**Whether you actually provide C&D recycling, LEED reports, Green Halo support (not on Instagram)**; actual container sizes (photos show A12/A28); phone number, cities served, prices/rental period/weight limits, which sizes you actually own, which services you really offer (dirt/concrete? LEED reports?), delivery lead time.
 
 ## Verification
 - `npm run build` passes; preview locally and screenshot at phone + desktop widths (Playwright).
