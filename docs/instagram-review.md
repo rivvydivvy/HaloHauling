@@ -14,7 +14,7 @@ Reviewed from screenshots, Nov 2026 (6 posts, 22 followers). Screenshots: [docs/
 | Badge logo | Round "HALO HAULING" emblem on the truck mud flap | Footer / social image |
 | Colors | Bright blue dumpsters, deep forest green, metallic gold, warm cream/beige backgrounds | Blue = buttons; green = header/footer; gold = accents; **cream** for section backgrounds (new) |
 | Type | Elegant serif headlines with italic accent ("Find Your *Perfect Fit.*", "For *Every Project.*"), thin gold divider line | Serif headings + clean sans body text |
-| Taglines | "Find Your Perfect Fit." · "The right size for every project." · "Dumpster Solutions For Every Project." · "Waste Solutions" | Section headings |
+| Taglines | "Your Project. Our Priority." · "Dependable Service for Demanding Projects." · "Find Your Perfect Fit." · "The right size for every project." · "Dumpster Solutions For Every Project." · "Waste Solutions" | Section headings |
 
 ## Services you advertise (from the "Find Your Perfect Fit" caption)
 1. Roll-Off Dumpster Rentals
@@ -32,16 +32,19 @@ Instagram says 10, 15, 20, 30, 40-yard with the same use labels as the plan.
 ## Photos — real vs. designed
 | Post | Looks like | Website use |
 |---|---|---|
-| 3 blue dumpsters at a warehouse loading dock | Real photo | ✅ Real work / yard |
+| 3 blue dumpsters at a warehouse loading dock (caption: "Dependable Service for Demanding Projects.") | Real photo | ✅ Commercial section / real work |
 | Swaploader hook-lift placing A12 in a driveway, larger dumpster behind (dirt + C&D job) | Real photo | ✅ Hero or "Real work" |
 | White hook-lift truck carrying blue A28, logo mud flap | Real photo | ✅ Hero candidate |
-| "Waste Solutions" excavator scene | Designed / likely AI-generated graphic | ⚠️ Don't present as a real job |
+| "Waste Solutions" excavator scene with A28 dumpster (caption: "Your Project. Our Priority.") | Designed / likely AI-generated graphic | ⚠️ Don't present as a real job |
 | "Find Your Perfect Fit" 5 dumpsters | Designed graphic | ⚠️ OK as a size-guide illustration only |
 | "Dumpster Solutions For Every Project" house build | Designed / likely AI-generated graphic | ⚠️ Don't present as a real job |
 
 Only **3 real photos** so far, not 6. Need the original files (Instagram compresses them). More real job photos will help a lot.
 
 ## Messaging themes to carry over
+- "Competitive rates", "simple and affordable" (two captions)
+- Audiences named: homeowners, contractors, **commercial retailers**, business owners
+- Rental types: **multiple dumpsters on-site, one-time rental, or ongoing service** → add "Ongoing / recurring service for businesses" (confirm you offer scheduled swaps)
 - Reliable, on-time delivery; "from start to finish"
 - Homeowners, contractors, and businesses
 - **Multiple dumpsters on one job** (e.g. dirt in one, C&D in another): "You ask, we deliver!" → add as a feature / FAQ

@@ -39,7 +39,7 @@ Decisions made:
 3. Services — 5 cards (2 lines each: what / who): + **Debris Hauling & Disposal** (from Instagram). Mention multiple dumpsters per job (e.g. dirt + C&D).
 4. Find Your Perfect Fit — size guide 10/15/20/30/40-yd with use cases; "Not sure? Message us" (no guessed prices)
 5. How it works — 3 steps
-6. Who it's for — Homeowners / Contractors / Businesses
+6. Who it's for — Homeowners / Contractors / Businesses & commercial retailers (one-time, multiple on-site, or ongoing service)
 7. Service area — "Bay Area, CA" (San Jose only once confirmed)
 8. Real work — the 3 real photos (A12 driveway drop, A28 truck, yard) + more as you get them; link to Instagram
 9. FAQ — cost, rental length, allowed/prohibited items, driveway protection, delivery speed (answers marked TBD for you to fill)
