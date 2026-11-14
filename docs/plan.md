@@ -8,6 +8,7 @@ Decisions made:
 - **Domain: gohalohauling.com** (the one you own). Emails: info@ / dispatch@ / billing@gohalohauling.com via Google Workspace (dispatch + billing can alias to one inbox at first).
 - **Repo:** GitHub repo `rivvydivvy/HaloHauling` (created).
 - **Instagram:** reviewed from your screenshots — see [instagram-review.md](instagram-review.md).
+- **Design direction:** see [design-direction.md](design-direction.md) (taste-skill pass).
 
 ## Step 0 — Setup (needs you)
 1. ~~Instagram screenshots~~ Done.

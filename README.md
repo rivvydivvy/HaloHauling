@@ -4,6 +4,8 @@ Website for Halo Hauling: roll-off dumpster rentals & construction debris soluti
 
 - **Plan:** [docs/plan.md](docs/plan.md)
 - **What still needs confirming:** [docs/content-todo.md](docs/content-todo.md)
+- **Design direction:** [docs/design-direction.md](docs/design-direction.md)
+- **Instagram review:** [docs/instagram-review.md](docs/instagram-review.md)
 
 ## Edit from any device
 - **Quick text edits:** open the file on github.com → pencil icon → commit. The site redeploys automatically.
