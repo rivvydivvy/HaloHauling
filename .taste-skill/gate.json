@@ -3,13 +3,22 @@
  "round": 1,
  "idle": 0,
  "errors": 0,
- "status": "fail",
+ "status": "pass",
  "history": [
   {
    "at": "2026-11-14T23:57:52.079Z",
    "mode": "manual",
    "status": "fail",
    "fails": 5,
+   "round": 1,
+   "reused": false,
+   "stopHookActive": false
+  },
+  {
+   "at": "2026-11-15T00:27:35.763Z",
+   "mode": "manual",
+   "status": "pass",
+   "fails": 0,
    "round": 1,
    "reused": false,
    "stopHookActive": false
@@ -32,7 +41,7 @@
  "roundFree": false,
  "idleFree": false,
  "blockKey": null,
- "fp": "850050cf7db4e4b1",
+ "fp": "a89334c6e0a12a79",
  "page": "index.html",
  "found": {
   "fails": [
@@ -69,38 +78,6 @@
     ]
    },
    {
-    "check": "one-sided",
-    "where": "#questions section.section.g2m \"Questions about renting What peo\"",
-    "msg": "its visuals end at x 599.3, short of the right line 1360",
-    "fix": "let the row reach both .wrap edges",
-    "widths": [
-     1440
-    ],
-    "from": "layout",
-    "ids": [
-     "one-sided"
-    ],
-    "wheres": [
-     "#questions section.section.g2m \"Questions about renting What peo\""
-    ]
-   },
-   {
-    "check": "one-sided",
-    "where": "#quote section.section.g2m \"Request a dumpster quote Send th\"",
-    "msg": "its visuals end at x 599.3, short of the right line 1360",
-    "fix": "let the row reach both .wrap edges",
-    "widths": [
-     1440
-    ],
-    "from": "layout",
-    "ids": [
-     "one-sided"
-    ],
-    "wheres": [
-     "#quote section.section.g2m \"Request a dumpster quote Send th\""
-    ]
-   },
-   {
     "check": "hero-lines",
     "where": "section.hero h1",
     "msg": "the check fills the h1 to 45 characters (this hero's maxChars in heroes.json), not the page's own: it takes 4 lines at 1440, 3 at most",
@@ -114,22 +91,6 @@
     ],
     "wheres": [
      "section.hero h1"
-    ]
-   },
-   {
-    "check": "screen-height",
-    "where": "#questions section.section.g2m \"Questions about renting What peo\"",
-    "msg": "1691px, 2.00 screens; a section is exactly one or two (--h), or on a phone at least one that its content fills",
-    "fix": "make the section exactly one or two screens (--h: 1 or 2)",
-    "widths": [
-     390
-    ],
-    "from": "layout",
-    "ids": [
-     "screen-height"
-    ],
-    "wheres": [
-     "#questions section.section.g2m \"Questions about renting What peo\""
     ]
    }
   ],
@@ -159,7 +120,7 @@
    {
     "check": "section-gaps",
     "where": "main#top > section.hero.hero--split / section#services",
-    "msg": "184px between these sections, -39% against the median 304px",
+    "msg": "184px between these sections, -27% against the median 252px",
     "fix": "use one gap between sections (all within 25% of each other)",
     "widths": [
      1440,
@@ -169,8 +130,18 @@
    },
    {
     "check": "section-gaps",
+    "where": "section#services / section#sizes",
+    "msg": "340px between these sections, +35% against the median 252px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
     "where": "section#steps / section#questions",
-    "msg": "uneven space at the edge of a band: 121px outside its edge, 220px inside it (the space on either side of a change of ground reads as one gap only when the two match)",
+    "msg": "340px between these sections, +35% against the median 252px of gaps at a change of ground",
     "fix": "use one gap between sections (all within 25% of each other)",
     "widths": [
      1440
@@ -179,7 +150,7 @@
    },
    {
     "check": "photo-set",
-    "where": "section#services > div.wrap.grid > figure.shot.span-6 > img \"dock-three-boxes-800.webp\"",
+    "where": "div.wrap.grid > figure.shot.span-6 > picture > img \"dock-three-boxes-800.webp\"",
     "msg": "5 photographs in more than one look: saturation from 0.15 to 0.53; the odd one out is dock-three-boxes-800.webp",
     "fix": "grade the photographs to one look (light, colour, warmth), or replace the odd one out",
     "widths": [
@@ -267,15 +238,26 @@
      390
     ],
     "from": "consistency"
+   },
+   {
+    "check": "hole",
+    "where": "section#questions \"Questions about renting\"",
+    "msg": "an empty hole 392x232px inside the section (27% of the screen's height), with content above and below it",
+    "fix": "close the empty space: move the content together, or give the space the visual it lacks",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
    }
   ],
   "crashed": [],
   "seconds": {
-   "consistency": 119,
+   "consistency": 118,
    "layout": 4
   }
  },
- "open": [
+ "open": [],
+ "waived": [
   {
    "check": "phone-number",
    "where": "header.nav.nav--centre > div.wrap.nav__bar > div.nav__actions \"408-442-1117\"",
@@ -290,74 +272,9 @@
    ],
    "wheres": [
     "header.nav.nav--centre > div.wrap.nav__bar > div.nav__actions \"408-442-1117\""
-   ]
+   ],
+   "reason": "408-442-1117 is the client's own business number, given in the brief; the site must show it so customers can call"
   },
-  {
-   "check": "one-sided",
-   "where": "#questions section.section.g2m \"Questions about renting What peo\"",
-   "msg": "its visuals end at x 599.3, short of the right line 1360",
-   "fix": "let the row reach both .wrap edges",
-   "widths": [
-    1440
-   ],
-   "from": "layout",
-   "ids": [
-    "one-sided"
-   ],
-   "wheres": [
-    "#questions section.section.g2m \"Questions about renting What peo\""
-   ]
-  },
-  {
-   "check": "one-sided",
-   "where": "#quote section.section.g2m \"Request a dumpster quote Send th\"",
-   "msg": "its visuals end at x 599.3, short of the right line 1360",
-   "fix": "let the row reach both .wrap edges",
-   "widths": [
-    1440
-   ],
-   "from": "layout",
-   "ids": [
-    "one-sided"
-   ],
-   "wheres": [
-    "#quote section.section.g2m \"Request a dumpster quote Send th\""
-   ]
-  },
-  {
-   "check": "hero-lines",
-   "where": "section.hero h1",
-   "msg": "the check fills the h1 to 45 characters (this hero's maxChars in heroes.json), not the page's own: it takes 4 lines at 1440, 3 at most",
-   "fix": "the check fills the h1 to this hero's maxChars, not your own: take the next type pairing the deal printed (start.mjs); when the h1 is final and fits, waive it (target: section.hero h1)",
-   "widths": [
-    1440
-   ],
-   "from": "layout",
-   "ids": [
-    "hero-lines"
-   ],
-   "wheres": [
-    "section.hero h1"
-   ]
-  },
-  {
-   "check": "screen-height",
-   "where": "#questions section.section.g2m \"Questions about renting What peo\"",
-   "msg": "1691px, 2.00 screens; a section is exactly one or two (--h), or on a phone at least one that its content fills",
-   "fix": "make the section exactly one or two screens (--h: 1 or 2)",
-   "widths": [
-    390
-   ],
-   "from": "layout",
-   "ids": [
-    "screen-height"
-   ],
-   "wheres": [
-    "#questions section.section.g2m \"Questions about renting What peo\""
-   ]
-  }
- ],
- "waived": [
   {
    "check": "phone-number",
    "where": "header.nav.nav--centre > div.wrap.nav__bar > div.nav__actions > a.nav__link \"tel:+14084421117\"",
@@ -374,8 +291,25 @@
     "header.nav.nav--centre > div.wrap.nav__bar > div.nav__actions > a.nav__link \"tel:+14084421117\""
    ],
    "reason": "the tel: link dials the client's own business number from the brief, which is the point of the link"
+  },
+  {
+   "check": "hero-lines",
+   "where": "section.hero h1",
+   "msg": "the check fills the h1 to 45 characters (this hero's maxChars in heroes.json), not the page's own: it takes 4 lines at 1440, 3 at most",
+   "fix": "the check fills the h1 to this hero's maxChars, not your own: take the next type pairing the deal printed (start.mjs); when the h1 is final and fits, waive it (target: section.hero h1)",
+   "widths": [
+    1440
+   ],
+   "from": "layout",
+   "ids": [
+    "hero-lines"
+   ],
+   "wheres": [
+    "section.hero h1"
+   ],
+   "reason": "the h1 is final and owner-approved: Bay Area roll-off dumpsters, 27 characters, two lines at 1440"
   }
  ],
- "warnCount": 13,
- "at": "2026-11-14T23:57:52.080Z"
+ "warnCount": 15,
+ "at": "2026-11-15T00:27:35.764Z"
 }
