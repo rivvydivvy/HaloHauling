@@ -3,7 +3,7 @@
 ## Confirmed and on the landing page
 - Phone: 408-442-1117
 - Hours: Monday to Saturday, 6 am to 5 pm; closed Sunday
-- Sizes: 10, 15, 20, 25, 30, 40 cubic yards
+- Sizes and dimensions (H x W x L, ft): 10 yd 2.5 x 8 x 14; 15 yd 3.5 x 8 x 14; 20 yd 4.5 x 8 x 16; 30 yd 6 x 8 x 18; 40 yd 6.5 x 8 x 22
 - Heavy debris (concrete, dirt, mixed heavy) in 10-yard containers only
 - Prices: quoted per job (city, address, size); none shown
 - Placement: driveway or street for residential
@@ -17,7 +17,7 @@
 ## Still open
 - [ ] Delivery notice: same-day, next-day, or how much notice?
 - [ ] Where quote requests should go (no Halo email yet): a private email, or text messages to the business phone?
-- [ ] A use label for the 25-yard size (currently "A step up from the 20-yard")
+- [ ] Is there a 25-yard size? It was in an earlier list but not in the dimensions list, so it is off the site for now
 - [ ] May the site say "no weight limit for heavy debris"?
 - [ ] Confirm the Sacramento area belongs on a page headed "Bay Area"
 - [ ] Cities left off the list for checking: Felton, Moss Landing, Briones
