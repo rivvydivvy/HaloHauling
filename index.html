@@ -166,12 +166,17 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 .process__head .h2 { margin-top: 16px; }
 .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .step { position: relative; }
-.step img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 999px 999px 0 0; }
+.step__art { aspect-ratio: 1 / 1; border: 1px solid rgba(198, 166, 107, .55); border-bottom: 0; border-radius: 999px 999px 0 0; display: grid; place-items: center; background: rgba(243, 234, 224, .03); transition: background-color .4s var(--ease); }
+.step__art svg { width: 68%; margin-top: 6%; height: auto; overflow: visible; fill: none; stroke: var(--cream); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: transform .5s var(--ease); }
+.step__art .t { stroke-width: 1; opacity: .6; }
+.step__art .g { stroke: var(--sage); stroke-width: 1; opacity: .6; }
+.step__art .a { stroke: var(--gold); }
+@media (hover: hover) { .step:hover .step__art { background: rgba(243, 234, 224, .07); } .step:hover .step__art svg { transform: translateY(-4px); } }
 .step__n { position: relative; z-index: 1; display: grid; place-items: center; width: 52px; height: 52px; margin: -26px 0 0 24px; border-radius: 50%; background: var(--forest); border: 1px solid var(--gold); color: var(--gold); font: 500 20px/1 var(--serif); }
 @media (min-width: 1024px) { .steps::before { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: var(--gold); opacity: .55; top: var(--line-y, 0); } .steps { position: relative; } }
 .step h3 { margin-top: 18px; font: 500 28px/1.1 var(--serif); text-transform: uppercase; }
 .step p { margin-top: 10px; max-width: 34ch; color: #dcd6c9; }
-@media (max-width: 1023px) { .steps { grid-template-columns: 1fr; gap: 56px; } .step { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 24px; align-content: end; } .step img { grid-row: 1 / span 4; } .step > :not(img) { grid-column: 2; } }
+@media (max-width: 1023px) { .steps { grid-template-columns: 1fr; gap: 56px; } .step { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 24px; align-content: end; } .step__art { grid-row: 1 / span 4; } .step > :not(.step__art) { grid-column: 2; } }
 @media (max-width: 639px) { .step { display: block; } }
 
 /* sizes */
@@ -297,7 +302,10 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 .quote__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; align-items: start; }
 .form { grid-column: 1 / span 7; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; }
 .field { display: grid; gap: 8px; align-content: start; }
-.form__end { grid-column: 1 / -1; }
+.form__end, .field--full { grid-column: 1 / -1; }
+.field .opt { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--muted); }
+.field textarea { font: 400 16px/1.5 var(--sans); color: var(--forest); background: var(--cream); border: 1px solid rgba(35, 59, 44, .45); border-radius: var(--r); padding: 12px 14px; width: 100%; min-height: 112px; resize: vertical; }
+.field textarea:focus { outline: 2px solid var(--olive); outline-offset: 1px; }
 .field label { font: 500 13px/1.3 var(--sans); letter-spacing: .08em; text-transform: uppercase; }
 .field input, .field select { font: 400 16px/1.4 var(--sans); color: var(--forest); background: var(--cream); border: 1px solid rgba(35, 59, 44, .45); border-radius: var(--r); height: 50px; padding: 0 14px; width: 100%; }
 .field input:focus, .field select:focus { outline: 2px solid var(--olive); outline-offset: 1px; }
@@ -335,13 +343,15 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 /* smaller screens: shorter photographs */
 @media (max-width: 1023px) {
   .services__photo img, .quote__photo img { aspect-ratio: 16 / 10; object-position: 50% 40%; }
-  .step img { aspect-ratio: 1 / 1; }
+  .step__art { aspect-ratio: 1 / 1; }
 }
 @media (max-width: 639px) {
   .services__photo img, .quote__photo img { aspect-ratio: 4 / 3; }
-  .step img { aspect-ratio: 4 / 3; }
+  .step__art { aspect-ratio: 4 / 3; }
   .step + .step { margin-top: 0; }
-  .step img, .services__photo img { border-radius: 171px 171px 0 0; aspect-ratio: 1 / 1; }
+  .services__photo img { border-radius: 171px 171px 0 0; aspect-ratio: 1 / 1; }
+  .step__art { border-radius: 171px 171px 0 0; aspect-ratio: 4 / 3; }
+  .step__art svg { width: 54%; }
   .sizer__b { min-height: 48px; }
 }
 
@@ -462,19 +472,37 @@ section { padding-block: clamp(80px, 11vw, 160px); }
       </div>
       <ol class="steps">
         <li class="step">
-          <img src="img/step-delivery.webp" alt="The hook-lift lowering a blue dumpster onto a house driveway" width="640" height="800" loading="lazy" decoding="async">
+          <div class="step__art"><svg viewBox="0 0 120 84" aria-hidden="true">
+            <path class="g" d="M4 68h112"/>
+            <g transform="rotate(-17 44 58)"><path d="M6 36h46l-3.5 18H9.5z"/><path class="t" d="M18 38v14M29 38v14M40 38v14"/></g>
+            <path d="M46 58h58"/><path d="M82 34h13l9 11v13H82z"/><path class="t" d="M87 38.5h6.5l5 6.5H87z"/>
+            <circle cx="60" cy="62" r="5.5"/><circle cx="94" cy="62" r="5.5"/>
+            <path class="a" d="M22 12v15M16 21.5l6 6 6-6"/>
+          </svg></div>
           <span class="step__n">01</span>
           <h3>We deliver it</h3>
           <p>The hook-lift sets the dumpster where you point, on a driveway or at the curb.</p>
         </li>
         <li class="step">
-          <img src="img/step-fill.webp" alt="A blue dumpster filled with broken concrete in front of a garage" width="640" height="800" loading="lazy" decoding="async">
+          <div class="step__art"><svg viewBox="0 0 120 84" aria-hidden="true">
+            <path class="g" d="M4 72h112"/>
+            <path d="M20 40h80l-6 26H26z"/><path class="t" d="M36 43v20M48 43v20M60 43v20M72 43v20M84 43v20"/>
+            <circle cx="34" cy="69" r="3"/><circle cx="86" cy="69" r="3"/>
+            <path class="t" d="M30 40l6-9 9 3 5-8 10 5 8-7 9 8 6-2 7 10"/>
+            <path class="a" d="M60 4v14M54 12.5l6 6 6-6"/>
+          </svg></div>
           <span class="step__n">02</span>
           <h3>You fill it</h3>
           <p>Load it at your own pace with debris, dirt, concrete or a cleanout.</p>
         </li>
         <li class="step">
-          <img src="img/step-pickup.webp" alt="The truck backing up to a blue dumpster at the curb" width="640" height="800" loading="lazy" decoding="async">
+          <div class="step__art"><svg viewBox="0 0 120 84" aria-hidden="true">
+            <path class="g" d="M4 68h112"/>
+            <path d="M20 30h56l-4 22H24z"/><path class="t" d="M32 33v16M42 33v16M52 33v16M62 33v16"/>
+            <path d="M16 54h66v4H16z"/><path d="M82 34h13l9 11v13H82z"/><path class="t" d="M87 38.5h6.5l5 6.5H87z"/>
+            <circle cx="30" cy="62" r="5.5"/><circle cx="44" cy="62" r="5.5"/><circle cx="94" cy="62" r="5.5"/>
+            <path class="a" d="M108 22h10M113 17l5 5-5 5"/><path class="t" d="M2 36h9M0 44h11M4 52h7"/>
+          </svg></div>
           <span class="step__n">03</span>
           <h3>We haul it away</h3>
           <p>Call when it is full. We pick it up and take the load for disposal.</p>
@@ -645,6 +673,8 @@ section { padding-block: clamp(80px, 11vw, 160px); }
           <div class="field"><label for="f-date">Delivery date</label>
             <input id="f-date" name="date" type="date" required aria-describedby="f-date-err">
             <p class="field__error" id="f-date-err" hidden>Choose the day you want the dumpster.</p></div>
+          <div class="field field--full"><label for="f-notes">Additional notes <span class="opt">(optional)</span></label>
+            <textarea id="f-notes" name="notes" rows="4"></textarea></div>
           <div class="form__end">
             <button class="btn btn--fill" type="submit">Get a quote</button>
             <p class="form__status" role="status"></p>
