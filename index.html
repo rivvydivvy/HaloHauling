@@ -55,19 +55,23 @@
   .shot { margin: 0; border-radius: var(--r-lg); overflow: hidden; height: min(560px, var(--ly-fit)); }
   .shot > img, .shot > picture > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
   .close__media > picture > img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: var(--pos, 50% 50%); }
-  .shot--side { height: auto; aspect-ratio: 4 / 3; margin-top: var(--s-7); }
   .quote-box { background: var(--surface); border-radius: var(--r-lg); padding: var(--s-7); }
+  .quote-col { display: grid; gap: var(--s-5); align-content: start; }
+  .shot--strip { height: 240px; --pos: 50% 55%; }
   /* a tablet keeps the page's split: words left, the picture or the form right, one screen each */
   @media (min-width: 640px) and (max-width: 1023px) {
     .wrap.grid.pair > :first-child { grid-column: 1 / span 6; }
     .wrap.grid.pair > :last-child { grid-column: 7 / span 6; }
     .quote-box { padding: var(--s-5); }
     .quote-box .form { grid-template-columns: minmax(0, 1fr); }
+    .shot:not(.shot--strip) { height: min(760px, var(--ly-fit)); }
+    .shot--strip { display: none; }
   }
   @media (max-width: 639px) {
-    .shot:not(.shot--side) { height: 100%; min-height: 420px; }
-    .shot--side { margin-top: var(--s-5); }
-    .quote-box { padding: var(--s-4); }
+    .shot:not(.shot--strip) { height: 100%; min-height: 420px; }
+    .shot--strip { height: 600px; }
+    .quote-col { margin-top: var(--s-5); }
+    .quote-box { padding: 0; background: none; border-radius: 0; }
   }
 </style>
 </head>
@@ -128,7 +132,7 @@
           <li><span class="rows__name">Debris hauling and disposal<small>We take the full box away</small></span></li>
         </ul>
       </div>
-      <figure class="shot span-6 start-7" style="--pos: 50% 78%"><img src="img/dock-three-boxes-1308.webp" srcset="img/dock-three-boxes-480.webp 480w, img/dock-three-boxes-800.webp 800w, img/dock-three-boxes-1308.webp 1308w" sizes="(max-width: 1023px) 100vw, 628px" alt="Three blue roll-off dumpsters of different sizes at a warehouse loading dock" width="1308" height="1202" loading="lazy" decoding="async" data-source="client" data-subject="dumpsters"></figure>
+      <figure class="shot span-6 start-7" style="--pos: 50% 78%"><picture><source media="(max-width: 639px)" srcset="img/dock-three-boxes-tall-560.webp"><img src="img/dock-three-boxes-1308.webp" srcset="img/dock-three-boxes-480.webp 480w, img/dock-three-boxes-800.webp 800w, img/dock-three-boxes-1308.webp 1308w" sizes="(min-width: 640px) and (max-width: 1023px) 1100px, 628px" alt="Three blue roll-off dumpsters of different sizes at a warehouse loading dock" width="1308" height="1202" loading="lazy" decoding="async" data-source="client" data-subject="dumpsters"></picture></figure>
     </div>
   </section>
 
@@ -171,7 +175,7 @@
           <li><span class="rows__name">3. We haul the load away<small>Call when it is full. We pick it up and take the load for disposal.</small></span></li>
         </ol>
       </div>
-      <figure class="shot span-6 start-7"><img src="img/driveway-delivery-1254.webp" srcset="img/driveway-delivery-480.webp 480w, img/driveway-delivery-800.webp 800w, img/driveway-delivery-1254.webp 1254w" sizes="(max-width: 1023px) 100vw, 628px" alt="A hook-lift truck lowering a blue dumpster onto a house driveway" width="1254" height="1254" decoding="async" data-source="client" data-subject="delivery"></figure>
+      <figure class="shot span-6 start-7"><picture><source media="(max-width: 639px)" srcset="img/driveway-delivery-tall-560.webp"><img loading="lazy" src="img/driveway-delivery-1254.webp" srcset="img/driveway-delivery-480.webp 480w, img/driveway-delivery-800.webp 800w, img/driveway-delivery-1254.webp 1254w" sizes="(min-width: 640px) and (max-width: 1023px) 1100px, 628px" alt="A hook-lift truck lowering a blue dumpster onto a house driveway" width="1254" height="1254" decoding="async" data-source="client" data-subject="delivery"></picture></figure>
     </div>
   </section>
 
@@ -180,29 +184,29 @@
       <div class="span-5">
         <div class="section-head">
           <h2 id="questions-h">Questions about renting</h2>
-          <p>What people ask before the first dumpster arrives.</p>
         </div>
-        <figure class="shot shot--side"><img src="img/concrete-load-800.webp" srcset="img/concrete-load-480.webp 480w, img/concrete-load-800.webp 800w, img/concrete-load-1400.webp 1400w" sizes="(max-width: 1023px) 100vw, 519px" alt="A blue dumpster filled with broken concrete in front of a garage" width="1400" height="1049" loading="lazy" decoding="async" data-source="client" data-subject="load"></figure>
+        <div class="faq">
+          <div class="faq__item"><h3>How much does a dumpster cost?</h3><p>It depends on the size, the material and the job address. Send those and we quote your job.</p></div>
+          <div class="faq__item"><h3>Can I rent more than one dumpster?</h3><p>Yes. We set several on one job, such as one for dirt and one for debris.</p></div>
+          <div class="faq__item"><h3>What can go in the dumpster?</h3><p>Construction and demolition debris, dirt, concrete and cleanout loads.</p></div>
+          <div class="faq__item"><h3>Which areas get dumpster delivery?</h3><p>The Bay Area. Send the job address and we confirm.</p></div>
+          <div class="faq__item"><h3>How do I book a dumpster?</h3><p>Send the quote request or call. We confirm the size, the price and the delivery day.</p></div>
+        </div>
       </div>
-      <div class="faq span-6 start-7">
-        <div class="faq__item"><h3>How much does a dumpster cost?</h3><p>The price depends on the size, the material and where the job is. Send those details and we quote your job.</p></div>
-        <div class="faq__item"><h3>Can I rent more than one dumpster?</h3><p>Yes. We set several on one job, such as one for dirt and one for construction debris.</p></div>
-        <div class="faq__item"><h3>What can go in the dumpster?</h3><p>Construction and demolition debris, dirt, concrete and cleanout loads. Name the material in your request so we send the right box.</p></div>
-        <div class="faq__item"><h3>Which areas get dumpster delivery?</h3><p>The Bay Area. Send the job address and we confirm.</p></div>
-      </div>
+      <figure class="shot span-6 start-7"><picture><source media="(max-width: 639px)" srcset="img/concrete-load-tall-560.webp"><img src="img/concrete-load-1400.webp" srcset="img/concrete-load-480.webp 480w, img/concrete-load-800.webp 800w, img/concrete-load-1400.webp 1400w" sizes="(min-width: 640px) and (max-width: 1023px) 1100px, 628px" alt="A blue dumpster filled with broken concrete in front of a garage" width="1400" height="1049" loading="lazy" decoding="async" data-source="client" data-subject="load"></picture></figure>
     </div>
   </section>
 
-  <section class="section g2m" id="quote" aria-labelledby="quote-h">
+  <section class="section" id="quote" style="--hm: 2" aria-labelledby="quote-h">
     <div class="wrap grid grid--top pair">
       <div class="span-5">
         <div class="section-head">
           <h2 id="quote-h">Request a dumpster quote</h2>
           <p>Send the size, the material, the address and the day. We call back with a price, or you call us on <a class="link" href="tel:+14084421117">408-442-1117</a>.</p>
         </div>
-        <figure class="shot shot--side"><img src="img/cd-box-lot-800.webp" srcset="img/cd-box-lot-480.webp 480w, img/cd-box-lot-800.webp 800w, img/cd-box-lot-1400.webp 1400w" sizes="(max-width: 1023px) 100vw, 519px" alt="A tall blue dumpster marked C and D on an open lot, seen from the truck" width="1400" height="1050" loading="lazy" decoding="async" data-source="client" data-subject="dumpster"></figure>
       </div>
-      <div class="quote-box span-6 start-7">
+      <div class="quote-col span-6 start-7">
+      <div class="quote-box">
         <form class="form" action="mailto:dispatch@gohalohauling.com" method="post" enctype="text/plain" data-endpoint="" data-sent="Your quote request is in. We call you back with a price." novalidate>
           <div class="field"><label for="f-name">Name</label>
             <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
@@ -237,6 +241,9 @@
           <p class="form__status" role="status" data-form-status></p>
         </form>
       </div>
+        <figure class="shot shot--strip"><picture><source media="(max-width: 639px)" srcset="img/cd-box-lot-tall-560.webp"><img src="img/cd-box-lot-1400.webp" srcset="img/cd-box-lot-480.webp 480w, img/cd-box-lot-800.webp 800w, img/cd-box-lot-1400.webp 1400w" sizes="628px" alt="A tall blue dumpster marked C and D on an open lot, seen from the truck" width="1400" height="1050" loading="lazy" decoding="async" data-source="client" data-subject="dumpster"></picture></figure>
+      </div>
+      
     </div>
   </section>
 </main>
@@ -253,7 +260,7 @@
     <div class="closing__links">
       <div class="grid">
         <div class="span-4 stack-4">
-          <a class="footer__mark" href="#top"><img src="img/logo-badge.png" alt="" width="240" height="240">Halo Hauling</a>
+          <a class="footer__mark" href="#top"><img src="img/logo-badge.png" alt="" width="240" height="240" loading="lazy">Halo Hauling</a>
           <p class="footer__lede">Roll-off dumpsters and debris hauling in the Bay Area, CA.</p>
         </div>
         <div class="span-2 footer__col"><h3>Services</h3><ul><li><a href="#services">Hauling services</a></li><li><a href="#sizes">Dumpster sizes</a></li></ul></div>
