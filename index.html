@@ -218,21 +218,24 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 .step__art svg * { transform-box: fill-box; }
 .step__art .rocks .r { fill: var(--forest); opacity: 0; }
 .step__art .chk { stroke-dasharray: 1; stroke-dashoffset: 0; }
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .step:hover .chk { animation: hh-check 1s ease-in-out .1s both; }
-  .step:hover .drop { animation: hh-drop 2s ease-in-out both; }
-  .step:hover .bob { animation: hh-bob 1.1s ease-in-out infinite; }
-  .step:hover .rocks .r { animation: hh-rock 1.3s cubic-bezier(.5, 0, .75, 0) infinite; }
-  .step:hover .rocks .r2 { animation-delay: .35s; } .step:hover .rocks .r3 { animation-delay: .7s; }
-  .step:hover .pile { animation: hh-pile 1.3s ease-in-out infinite; }
-  .step:hover .body { animation: hh-rumble .28s ease-in-out infinite alternate; }
-  .step:hover .wheel { animation: hh-spin .5s linear infinite; transform-origin: center; }
-  .step:hover .speed { animation: hh-speed .55s linear infinite; }
-  .step:hover .bob-x { animation: hh-nudge .8s ease-in-out infinite; }
+@media (prefers-reduced-motion: no-preference) {
+  :is(.step:hover, .step.is-play) .chk { animation: hh-check .8s ease-in-out .1s both; }
+  :is(.step:hover, .step.is-play) .drop { animation: hh-drop 1.4s ease-in-out both; }
+  :is(.step:hover, .step.is-play) .bob { animation: hh-bob .9s ease-in-out infinite; }
+  :is(.step:hover, .step.is-play) .rocks .r { animation: hh-rock 1s cubic-bezier(.5, 0, .75, 0) infinite; }
+  :is(.step:hover, .step.is-play) .rocks .r2 { animation-delay: .25s; } :is(.step:hover, .step.is-play) .rocks .r3 { animation-delay: .5s; }
+  :is(.step:hover, .step.is-play) .pile { animation: hh-pile 1s ease-in-out infinite; }
+  :is(.step:hover, .step.is-play) .body { animation: hh-rumble .24s ease-in-out infinite alternate; }
+  :is(.step:hover, .step.is-play) .wheel { animation: hh-spin .45s linear infinite; transform-origin: center; }
+  :is(.step:hover, .step.is-play) .speed { animation: hh-speed .45s linear infinite; }
+  :is(.step:hover, .step.is-play) .bob-x { animation: hh-nudge .7s ease-in-out infinite; }
+  .step.is-play { animation: hh-pop .7s cubic-bezier(.34, 1.56, .64, 1) both; border-color: var(--gold); }
 }
-.step__art .drop { transform-box: view-box; transform-origin: 0px 68px; }
+@media (hover: none) { .step:hover .step__art * { animation: none; } }
+.step__art .drop { transform-box: view-box; transform-origin: 0px 68px; transform: translate(10px, 0) rotate(-13.4deg); }
+@keyframes hh-pop { 0% { transform: translateY(0) scale(1); } 45% { transform: translateY(-14px) scale(1.04); background: rgba(243, 234, 224, .07); } 100% { transform: translateY(0) scale(1); } }
 @keyframes hh-check { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-@keyframes hh-drop { 0% { transform: translate(48px, -11px) rotate(0); } 25% { transform: translate(44px, -11px) rotate(0); } 55% { transform: translate(24px, -9px) rotate(-12deg); } 78% { transform: translate(5px, -1px) rotate(-5deg); } 90% { transform: translate(0, 0) rotate(1deg); } 100% { transform: translate(0, 0) rotate(0); } }
+@keyframes hh-drop { 0% { transform: translate(48px, -11px) rotate(0); } 30% { transform: translate(42px, -11px) rotate(0); } 75% { transform: translate(12px, 0) rotate(-12.5deg); } 88% { transform: translate(9px, 0) rotate(-14deg); } 100% { transform: translate(10px, 0) rotate(-13.4deg); } }
 @keyframes hh-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
 @keyframes hh-rock { 0% { opacity: 0; transform: translateY(-10px); } 15% { opacity: 1; } 70% { opacity: 1; transform: translateY(22px); } 85%, 100% { opacity: 0; transform: translateY(24px); } }
 @keyframes hh-pile { 0%, 60%, 100% { transform: translateY(0); } 70% { transform: translateY(1.5px); } }
@@ -801,6 +804,20 @@ section { padding-block: clamp(80px, 11vw, 160px); }
     p.setAttribute('aria-label', on ? 'Play the moving text' : 'Pause the moving text');
     p.innerHTML = on ? icons.play : icons.pause;
   });
+
+
+  // "Hauling made easy": when the arches come into view, each one pops and plays its scene in turn
+  const stepList = document.querySelector('.steps');
+  if (stepList && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let last = 0;
+    new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting || Date.now() - last < 4000) return; last = Date.now();
+      stepList.querySelectorAll('.step').forEach((st, i) => {
+        setTimeout(() => { st.classList.remove('is-play'); void st.offsetWidth; st.classList.add('is-play'); }, i * 320);
+        setTimeout(() => st.classList.remove('is-play'), i * 320 + 1700);
+      });
+    }), { threshold: .45 }).observe(stepList);
+  }
 
   const sz = document.querySelector('[data-sizer]');
   if (sz) {
