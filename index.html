@@ -118,6 +118,11 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 .hero__media { position: relative; min-height: 420px; overflow: hidden; }
 .hero__media picture, .hero__media > picture img { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero__media > picture img { object-fit: cover; object-position: 50% 35%; }
+@media (min-width: 1024px) {
+  .hero__media::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 26%; z-index: 1; pointer-events: none;
+    background: linear-gradient(to right, var(--cream) 0%, rgba(243, 234, 224, .82) 22%, rgba(243, 234, 224, .45) 52%, rgba(243, 234, 224, .14) 78%, rgba(243, 234, 224, 0) 100%); }
+  .hero__card { z-index: 2; }
+}
 .hero__card { position: absolute; right: clamp(16px, 3vw, 40px); bottom: clamp(16px, 3vw, 40px); display: flex; align-items: center; gap: 20px; padding: 18px 18px 18px 26px; background: var(--cream); border-radius: 20px; text-decoration: none; box-shadow: 0 10px 30px rgba(20, 30, 22, .18); transition: transform .3s var(--ease); }
 .hero__card:hover { transform: translateY(-3px); }
 .hero__card-text { display: grid; gap: 4px; }
