@@ -229,16 +229,19 @@ section { padding-block: clamp(80px, 11vw, 160px); }
   .step:hover .wheel { animation: hh-spin .5s linear infinite; transform-origin: center; }
   .step:hover .speed { animation: hh-speed .5s linear infinite; }
   .step:hover .bob-x { animation: hh-nudge .8s ease-in-out infinite; }
-  /* on scroll each scene plays a set number of times and comes to rest */
-  .step.is-play .bob { animation: hh-bob 1s ease-in-out 2; }
-  .step.is-play .rocks .r { animation: hh-rock 1.2s cubic-bezier(.5, 0, .75, 0) 1; }
-  .step.is-play .pile { animation: hh-pile 1.2s ease-in-out 1.5; }
-  .step.is-play .body { animation: hh-rumble .26s ease-in-out 8 alternate; }
-  .step.is-play .wheel { animation: hh-spin .5s linear 4; transform-origin: center; }
-  .step.is-play .speed { animation: hh-speed .5s linear 4; }
-  .step.is-play .bob-x { animation: hh-nudge .8s ease-in-out 2.5; }
+  /* on scroll each scene plays a short, set number of times and comes to rest */
+  .step.is-play .chk { animation: hh-check .7s ease-in-out .05s both; }
+  .step.is-play .drop { animation: hh-drop 1s ease-in-out both; }
+  .step.is-play .bob { animation: hh-bob .5s ease-in-out 2; }
+  .step.is-play .rocks .r { animation: hh-rock .7s cubic-bezier(.5, 0, .75, 0) 1; }
+  .step.is-play .pile { animation: hh-pile .5s ease-in-out 2; }
+  .step.is-play .body { animation: hh-rumble .2s ease-in-out 5 alternate; }
+  .step.is-play .wheel { animation: hh-spin .4s linear 2.5; transform-origin: center; }
+  .step.is-play .speed { animation: hh-speed .4s linear 2.5; }
+  .step.is-play .bob-x { animation: hh-nudge .5s ease-in-out 2; }
+  .step.is-play .rocks .r2 { animation-delay: .15s; } .step.is-play .rocks .r3 { animation-delay: .3s; }
   :is(.step:hover, .step.is-play) .rocks .r2 { animation-delay: .3s; } :is(.step:hover, .step.is-play) .rocks .r3 { animation-delay: .6s; }
-  .step.is-play { transform: translateY(-14px) scale(1.03); border-color: var(--gold); background: rgba(243, 234, 224, .07); transition-duration: .45s; transition-timing-function: cubic-bezier(.34, 1.56, .64, 1); }
+  .step.is-play { transform: translateY(-14px) scale(1.03); border-color: var(--gold); background: rgba(243, 234, 224, .07); transition-duration: .3s; transition-timing-function: cubic-bezier(.34, 1.56, .64, 1); }
   .step.is-play .step__art svg { transform: translateY(-5px); }
 }
 @media (hover: none) { .step:hover .step__art * { animation: none; } }
@@ -825,12 +828,12 @@ section { padding-block: clamp(80px, 11vw, 160px); }
       if (running) return; running = true;
       for (const st of stepList.querySelectorAll('.step')) {
         st.classList.add('is-play');
-        await wait(60);
+        await wait(30);
         const scenes = st.getAnimations({ subtree: true }).filter(a => a instanceof CSSAnimation);
         await Promise.all(scenes.map(a => a.finished.catch(() => {})));
-        await wait(250);
+        await wait(100);
         st.classList.remove('is-play');
-        await wait(300);
+        await wait(120);
       }
       running = false;
     };
