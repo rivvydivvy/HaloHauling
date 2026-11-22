@@ -192,22 +192,28 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 /* process: the dark band */
 .dark { background: var(--forest); color: var(--cream); }
 .dark .label { color: var(--sage); }
-.process__head { text-align: center; margin-bottom: clamp(48px, 6vw, 80px); }
-.process__head .h2 { margin-top: 16px; }
-.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-.step { position: relative; }
-.step__art { aspect-ratio: 1 / 1; border: 1px solid rgba(198, 166, 107, .55); border-bottom: 0; border-radius: 999px 999px 0 0; display: grid; place-items: center; background: rgba(243, 234, 224, .03); transition: background-color .4s var(--ease); }
-.step__art svg { width: 68%; margin-top: 6%; height: auto; overflow: visible; fill: none; stroke: var(--cream); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: transform .5s var(--ease); }
-.step__art .t { stroke-width: 1; opacity: .6; }
+.process { padding-block: clamp(72px, 8vw, 112px); }
+.process__title { display: flex; align-items: center; justify-content: center; gap: clamp(16px, 3vw, 32px); margin-bottom: clamp(40px, 5vw, 64px);
+  font: 500 clamp(22px, 2.4vw, 32px)/1.2 var(--serif); letter-spacing: .22em; text-transform: uppercase; text-align: center; }
+.process__title::before, .process__title::after { content: ""; height: 1px; width: clamp(40px, 9vw, 130px); background: var(--gold); flex: none; }
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); }
+.step { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding: clamp(40px, 4vw, 56px) clamp(18px, 2vw, 28px) 36px; border: 1px solid rgba(198, 166, 107, .6); border-radius: 999px 999px 18px 18px;
+  transition: background-color .4s var(--ease), border-color .4s var(--ease), transform .4s var(--ease); }
+.step__art { width: 100%; max-width: 150px; }
+.step__art svg { width: 100%; height: auto; overflow: visible; fill: none; stroke: var(--cream); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .5s var(--ease); }
+.step__art .t { stroke-width: 1.1; opacity: .6; }
 .step__art .g { stroke: var(--sage); stroke-width: 1; opacity: .6; }
 .step__art .a { stroke: var(--gold); }
-@media (hover: hover) { .step:hover .step__art { background: rgba(243, 234, 224, .07); } .step:hover .step__art svg { transform: translateY(-4px); } }
-.step__n { position: relative; z-index: 1; display: grid; place-items: center; width: 52px; height: 52px; margin: -26px 0 0 24px; border-radius: 50%; background: var(--forest); border: 1px solid var(--gold); color: var(--gold); font: 500 20px/1 var(--serif); }
-@media (min-width: 1024px) { .steps::before { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: var(--gold); opacity: .55; top: var(--line-y, 0); } .steps { position: relative; } }
-.step h3 { margin-top: 18px; font: 500 28px/1.1 var(--serif); text-transform: uppercase; }
-.step p { margin-top: 10px; max-width: 34ch; color: #dcd6c9; }
-@media (max-width: 1023px) { .steps { grid-template-columns: 1fr; gap: 56px; } .step { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 24px; align-content: end; } .step__art { grid-row: 1 / span 4; } .step > :not(.step__art) { grid-column: 2; } }
-@media (max-width: 639px) { .step { display: block; } }
+.step__n { margin-top: 20px; font: 500 20px/1 var(--sans); letter-spacing: .08em; color: var(--gold); }
+.step h3 { margin-top: 12px; font: 500 clamp(22px, 1.9vw, 27px)/1.15 var(--serif); }
+.step p { margin-top: 12px; max-width: 26ch; color: #dcd6c9; }
+@media (hover: hover) {
+  .step:hover { background: rgba(243, 234, 224, .06); border-color: var(--gold); transform: translateY(-4px); }
+  .step:hover .step__art svg { transform: translateY(-5px); }
+}
+@media (max-width: 1099px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 599px) { .steps { grid-template-columns: 1fr; gap: 20px; } .step { border-radius: 160px 160px 18px 18px; padding-top: 48px; } .step__art { max-width: 170px; } .process__title { letter-spacing: .14em; } .process__title::before, .process__title::after { width: 28px; } }
 
 /* sizes */
 .sizes__head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; align-items: end; margin-bottom: clamp(40px, 5vw, 72px); }
@@ -373,15 +379,10 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 /* smaller screens: shorter photographs */
 @media (max-width: 1023px) {
   .services__photo img, .quote__photo img { aspect-ratio: 16 / 10; object-position: 50% 40%; }
-  .step__art { aspect-ratio: 1 / 1; }
 }
 @media (max-width: 639px) {
   .services__photo img, .quote__photo img { aspect-ratio: 4 / 3; }
-  .step__art { aspect-ratio: 4 / 3; }
-  .step + .step { margin-top: 0; }
   .services__photo img { border-radius: 171px 171px 0 0; aspect-ratio: 1 / 1; }
-  .step__art { border-radius: 171px 171px 0 0; aspect-ratio: 4 / 3; }
-  .step__art svg { width: 54%; }
   .sizer__b { min-height: 48px; }
 }
 
@@ -460,6 +461,61 @@ section { padding-block: clamp(80px, 11vw, 160px); }
     </ul>
   </section>
 
+  <section class="dark process" id="process" aria-labelledby="process-h">
+    <div class="wrap">
+      <h2 class="process__title" id="process-h">Hauling made easy.</h2>
+      <ol class="steps">
+        <li class="step">
+          <div class="step__art"><svg viewBox="0 0 120 84" aria-hidden="true">
+            <path class="g" d="M4 70h112"/>
+            <rect x="30" y="18" width="60" height="40" rx="3"/><path class="t" d="M36 24h48v28H36z"/>
+            <path d="M20 62h80l-4 6H24z"/>
+            <path class="a" d="M50 38l7 7 13-13"/>
+          </svg></div>
+          <span class="step__n">01</span>
+          <h3>Rent your dumpster</h3>
+          <p>Choose the right size for your project and request it online or by phone.</p>
+        </li>
+        <li class="step">
+          <div class="step__art"><svg viewBox="0 0 120 84" aria-hidden="true">
+            <path class="g" d="M4 68h112"/>
+            <g transform="rotate(-17 44 58)"><path d="M6 36h46l-3.5 18H9.5z"/><path class="t" d="M18 38v14M29 38v14M40 38v14"/></g>
+            <path d="M46 58h58"/><path d="M82 34h13l9 11v13H82z"/><path class="t" d="M87 38.5h6.5l5 6.5H87z"/>
+            <circle cx="60" cy="62" r="5.5"/><circle cx="94" cy="62" r="5.5"/>
+            <path class="a" d="M22 12v15M16 21.5l6 6 6-6"/>
+          </svg></div>
+          <span class="step__n">02</span>
+          <h3>We deliver it</h3>
+          <p>We deliver your dumpster on time and place it where you need it.</p>
+        </li>
+        <li class="step">
+          <div class="step__art"><svg viewBox="0 0 120 84" aria-hidden="true">
+            <path class="g" d="M4 72h112"/>
+            <path d="M20 40h80l-6 26H26z"/><path class="t" d="M36 43v20M48 43v20M60 43v20M72 43v20M84 43v20"/>
+            <circle cx="34" cy="69" r="3"/><circle cx="86" cy="69" r="3"/>
+            <path class="t" d="M30 40l6-9 9 3 5-8 10 5 8-7 9 8 6-2 7 10"/>
+            <path class="a" d="M60 4v14M54 12.5l6 6 6-6"/>
+          </svg></div>
+          <span class="step__n">03</span>
+          <h3>You fill it</h3>
+          <p>Load it at your own pace with debris, dirt, concrete, or a cleanout.</p>
+        </li>
+        <li class="step">
+          <div class="step__art"><svg viewBox="0 0 120 84" aria-hidden="true">
+            <path class="g" d="M4 68h112"/>
+            <path d="M20 30h56l-4 22H24z"/><path class="t" d="M32 33v16M42 33v16M52 33v16M62 33v16"/>
+            <path d="M16 54h66v4H16z"/><path d="M82 34h13l9 11v13H82z"/><path class="t" d="M87 38.5h6.5l5 6.5H87z"/>
+            <circle cx="30" cy="62" r="5.5"/><circle cx="44" cy="62" r="5.5"/><circle cx="94" cy="62" r="5.5"/>
+            <path class="a" d="M108 22h10M113 17l5 5-5 5"/><path class="t" d="M2 36h9M0 44h11M4 52h7"/>
+          </svg></div>
+          <span class="step__n">04</span>
+          <h3>We do the dirty work</h3>
+          <p>When you’re done, we pick it up and take care of the disposal.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
   <section class="intro" id="about" aria-labelledby="intro-h">
     <div class="wrap split">
       <div class="intro__head">
@@ -499,58 +555,12 @@ section { padding-block: clamp(80px, 11vw, 160px); }
     </div>
   </section>
 
-  <section class="dark process" id="process" aria-labelledby="process-h">
-    <div class="wrap">
-      <div class="process__head">
-        <p class="label"><span>03</span>Process</p>
-        <h2 class="h2" id="process-h">How a <em>R</em>ental works</h2>
-      </div>
-      <ol class="steps">
-        <li class="step">
-          <div class="step__art"><svg viewBox="0 0 120 84" aria-hidden="true">
-            <path class="g" d="M4 68h112"/>
-            <g transform="rotate(-17 44 58)"><path d="M6 36h46l-3.5 18H9.5z"/><path class="t" d="M18 38v14M29 38v14M40 38v14"/></g>
-            <path d="M46 58h58"/><path d="M82 34h13l9 11v13H82z"/><path class="t" d="M87 38.5h6.5l5 6.5H87z"/>
-            <circle cx="60" cy="62" r="5.5"/><circle cx="94" cy="62" r="5.5"/>
-            <path class="a" d="M22 12v15M16 21.5l6 6 6-6"/>
-          </svg></div>
-          <span class="step__n">01</span>
-          <h3>We deliver it</h3>
-          <p>The hook-lift sets the dumpster where you point, on a driveway or at the curb.</p>
-        </li>
-        <li class="step">
-          <div class="step__art"><svg viewBox="0 0 120 84" aria-hidden="true">
-            <path class="g" d="M4 72h112"/>
-            <path d="M20 40h80l-6 26H26z"/><path class="t" d="M36 43v20M48 43v20M60 43v20M72 43v20M84 43v20"/>
-            <circle cx="34" cy="69" r="3"/><circle cx="86" cy="69" r="3"/>
-            <path class="t" d="M30 40l6-9 9 3 5-8 10 5 8-7 9 8 6-2 7 10"/>
-            <path class="a" d="M60 4v14M54 12.5l6 6 6-6"/>
-          </svg></div>
-          <span class="step__n">02</span>
-          <h3>You fill it</h3>
-          <p>Load it at your own pace with debris, dirt, concrete or a cleanout.</p>
-        </li>
-        <li class="step">
-          <div class="step__art"><svg viewBox="0 0 120 84" aria-hidden="true">
-            <path class="g" d="M4 68h112"/>
-            <path d="M20 30h56l-4 22H24z"/><path class="t" d="M32 33v16M42 33v16M52 33v16M62 33v16"/>
-            <path d="M16 54h66v4H16z"/><path d="M82 34h13l9 11v13H82z"/><path class="t" d="M87 38.5h6.5l5 6.5H87z"/>
-            <circle cx="30" cy="62" r="5.5"/><circle cx="44" cy="62" r="5.5"/><circle cx="94" cy="62" r="5.5"/>
-            <path class="a" d="M108 22h10M113 17l5 5-5 5"/><path class="t" d="M2 36h9M0 44h11M4 52h7"/>
-          </svg></div>
-          <span class="step__n">03</span>
-          <h3>We haul it away</h3>
-          <p>Call when it is full. We pick it up and take the load for disposal.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
 
   <section class="sizes" id="sizes" aria-labelledby="sizes-h">
     <div class="wrap">
       <div class="sizes__head">
         <div>
-          <p class="label"><span>04</span>Find your perfect fit</p>
+          <p class="label"><span>03</span>Find your perfect fit</p>
           <h2 class="h2" id="sizes-h">Dumpster <em>S</em>izes</h2>
         </div>
         <p>Five sizes, drawn to scale beside a 6-foot figure. Pick one for its measurements. Every price is quoted for the job: the city, the address and the size.</p>
@@ -577,7 +587,7 @@ section { padding-block: clamp(80px, 11vw, 160px); }
   <section class="materials" id="materials" aria-labelledby="materials-h">
     <div class="wrap">
       <div class="services__head">
-        <p class="label"><span>05</span>Materials</p>
+        <p class="label"><span>04</span>Materials</p>
         <h2 class="h2" id="materials-h">What goes <em>I</em>n</h2>
       </div>
       <div class="mat">
@@ -606,7 +616,7 @@ section { padding-block: clamp(80px, 11vw, 160px); }
   <section class="jobs" id="jobs" aria-labelledby="jobs-h">
     <div class="wrap jobs__head">
       <div>
-        <p class="label"><span>06</span>Recent jobs</p>
+        <p class="label"><span>05</span>Recent jobs</p>
         <h2 class="h2" id="jobs-h">On the <em>J</em>ob</h2>
       </div>
       <p>Driveways, curbs, building sites and loading docks around the Bay Area. More on <a href="https://www.instagram.com/halohauling/">Instagram</a>.</p>
@@ -624,7 +634,7 @@ section { padding-block: clamp(80px, 11vw, 160px); }
   <section class="dark areas" id="areas" aria-labelledby="areas-h">
     <div class="wrap">
       <div class="process__head">
-        <p class="label"><span>07</span>Service area</p>
+        <p class="label"><span>06</span>Service area</p>
         <h2 class="h2" id="areas-h">Where we <em>D</em>eliver</h2>
       </div>
       <div class="regions" data-regions>
@@ -659,7 +669,7 @@ section { padding-block: clamp(80px, 11vw, 160px); }
   <section class="faq-wrap" id="questions" aria-labelledby="questions-h">
     <div class="wrap split">
       <div class="faq__head">
-        <p class="label"><span>08</span>Questions</p>
+        <p class="label"><span>07</span>Questions</p>
         <h2 class="h2" id="questions-h">Before you <em>R</em>ent</h2>
         <p>Something else to ask? Call <a href="tel:+14084421117">408-442-1117</a>.</p>
         <figure class="faq__photo"><img src="img/faq-street.webp" alt="A long blue dumpster set at the curb on a residential street" width="1000" height="750" loading="lazy" decoding="async"></figure>
@@ -677,7 +687,7 @@ section { padding-block: clamp(80px, 11vw, 160px); }
   <section class="quote" id="quote" aria-labelledby="quote-h">
     <div class="wrap">
       <div class="quote__head">
-        <p class="label"><span>09</span>Request a quote</p>
+        <p class="label"><span>08</span>Request a quote</p>
         <h2 class="display" id="quote-h">Rent a dumpster <em>T</em>his week</h2>
         <p>Send the size, the material, the address and the day. We call back with a price.</p>
       </div>
@@ -782,9 +792,6 @@ section { padding-block: clamp(80px, 11vw, 160px); }
     });
   }
 
-  const steps = document.querySelector('.steps');
-  const setLine = () => { const n = steps.querySelector('.step__n'); steps.style.setProperty('--line-y', (n.offsetTop + n.offsetHeight / 2) + 'px'); };
-  setLine(); addEventListener('resize', setLine); addEventListener('load', setLine);
 
   const f = document.querySelector('.form'), status = f.querySelector('.form__status');
   f.addEventListener('submit', e => {
