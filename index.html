@@ -118,9 +118,10 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 .hero__cats li::before { content: "|"; position: absolute; left: 9px; color: var(--gold); }
 .hero__media { position: relative; min-height: 420px; overflow: hidden; }
 .hero__media picture, .hero__media > picture img { position: absolute; inset: 0; width: 100%; height: 100%; }
-.hero__media > picture img { object-fit: cover; object-position: 50% 35%; }
+.hero__media > picture img { object-fit: cover; object-position: 20% 45%; }
 @media (min-width: 1024px) {
-  .hero__media { clip-path: ellipse(140% 118% at 140% 50%); }
+  .hero__media { margin: 24px 24px 24px 0; border-radius: 0 28px 28px 0; }
+  .hero__media > picture { clip-path: ellipse(140% 118% at 140% 50%); }
 }
 .hero__card { position: absolute; right: clamp(16px, 3vw, 40px); bottom: clamp(16px, 3vw, 40px); display: flex; align-items: center; gap: 20px; padding: 18px 18px 18px 26px; background: var(--cream); border-radius: 20px; text-decoration: none; box-shadow: 0 10px 30px rgba(20, 30, 22, .18); transition: transform .3s var(--ease); }
 .hero__card:hover { transform: translateY(-3px); }
