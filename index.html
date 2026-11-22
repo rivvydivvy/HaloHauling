@@ -46,7 +46,7 @@ ul, ol { list-style: none; }
 .display em, .h2 em { font-style: italic; text-transform: none; font-size: 1.12em; line-height: 0; }
 .label { font: 500 13px/1.4 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .label > span { color: var(--gold); margin-right: 12px; padding-right: 12px; border-right: 1px solid currentColor; }
-.dark .label > span, .label > span { color: #9a7a35; }
+.dark .label > span, .label > span { color: #775a1c; }
 .dark .label > span { color: var(--gold); }
 .lead { font-size: 18px; line-height: 1.6; max-width: 46ch; }
 .caps { font: 500 13px/1.3 var(--sans); letter-spacing: .08em; text-transform: uppercase; }
@@ -69,14 +69,17 @@ ul, ol { list-style: none; }
 .nav { position: sticky; top: 0; z-index: 20; background: var(--cream); border-bottom: 1px solid var(--line); }
 .nav__bar { height: var(--nav); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; }
 .nav__logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 500 15px/1 var(--serif); letter-spacing: .14em; text-transform: uppercase; }
-.nav__logo img { height: 30px; width: auto; }
-.nav__links { display: flex; gap: 32px; }
+.nav__logo img { height: 44px; width: auto; }
+.nav__links { display: flex; gap: clamp(28px, 3vw, 48px); font: 500 15px/1 var(--sans); }
+.nav__links a[aria-current] { border-bottom-color: var(--forest); }
 .nav__links a { text-decoration: none; padding: 8px 0; border-bottom: 1px solid transparent; }
 .nav__links a:hover { border-bottom-color: currentColor; }
 .nav__end { display: flex; justify-content: flex-end; align-items: center; gap: 24px; }
-.nav__end .btn { min-height: 40px; padding: 0 18px; font-size: 13px; }
-.nav__phone { text-decoration: none; white-space: nowrap; }
+.nav__end .btn { min-height: 44px; padding: 0 20px; font-size: 13px; }
+.nav__phone { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; white-space: nowrap; font: 500 15px/1 var(--sans); }
+.nav__phone svg { width: 16px; height: 16px; fill: var(--forest); }
 .nav__toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: var(--r); background: none; color: inherit; cursor: pointer; }
+@media (max-width: 1199px) { .nav__links { gap: 24px; } .nav__end { gap: 16px; } }
 @media (max-width: 1023px) {
   .nav__bar { grid-template-columns: 1fr auto; }
   .nav__links, .nav__phone { display: none; }
@@ -89,41 +92,62 @@ ul, ol { list-style: none; }
 
 section { padding-block: clamp(80px, 11vw, 160px); }
 
-/* hero: centred headline over a row of three photographs */
-.hero { padding-block: clamp(56px, 8vw, 112px) 0; text-align: center; }
-.hero .display { margin-inline: auto; }
-@media (max-width: 899px) { br.lg { display: none; } .hero .display { max-width: 12ch; } }
-.hero__sub { margin: 28px auto 0; max-width: 52ch; font-size: 18px; }
-.hero__tags { margin-top: 14px; color: var(--muted); }
-.hero__actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
-.hero__row { margin-top: clamp(24px, 3vw, 40px); padding: clamp(56px, 7vw, 96px) 0 84px; display: grid; grid-template-columns: 1fr minmax(0, 980px) 1fr; gap: 24px; align-items: center; overflow: hidden; }
-.hero__row img { width: 100%; object-fit: cover; }
-.hero__row .side { height: clamp(320px, 33vw, 470px); }
-.hero__row .side--l img { object-position: 100% 50%; height: 100%; }
-.hero__row .side--r img { object-position: 0% 50%; height: 100%; }
-.hero__row .main img { aspect-ratio: 1.75; }
-.hero__row .main { position: relative; }
-.halo { position: absolute; left: -7%; width: 114%; top: clamp(-84px, -6vw, -40px); pointer-events: none; overflow: visible; }
-.halo path { fill: none; stroke: var(--gold); stroke-width: 1.6; vector-effect: non-scaling-stroke; }
-.hero__row .side, .hero__row .main picture { position: relative; z-index: 1; display: block; }
-.seal { z-index: 2; }
-.seal { position: absolute; right: -58px; bottom: -62px; width: 148px; height: 148px; border-radius: 50%; background: var(--forest); color: var(--cream); display: grid; place-items: center; text-decoration: none; transition: background-color .25s var(--ease); }
-.seal:hover { background: var(--olive); }
-.seal__ring { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 26s linear infinite; }
-.seal__ring text { font: 500 15.5px var(--sans); letter-spacing: .12em; fill: currentColor; }
-.seal__arrow { width: 34px; height: 34px; fill: none; stroke: var(--gold); stroke-width: 1.4; transition: transform .3s var(--ease); }
-.seal:hover .seal__arrow { transform: translate(3px, -3px); }
-@keyframes spin { to { transform: rotate(360deg); } }
-.is-still .seal__ring, .is-still .marquee__track { animation-play-state: paused; }
-@media (max-width: 1199px) { .seal { right: 16px; } }
+/* hero: words left, photograph to the right edge, four promises under it */
+.hero { padding: 0; }
+.hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); min-height: min(760px, calc(100svh - var(--nav) - 120px)); border-bottom: 1px solid var(--line); }
+.hero__text { padding: clamp(48px, 6vw, 88px) clamp(32px, 4vw, 64px) clamp(40px, 5vw, 72px) max(var(--gut), calc((100vw - var(--max)) / 2)); display: flex; flex-direction: column; justify-content: center; }
+.hero__kicker { display: flex; align-items: center; gap: 10px; font: 500 13px/1.3 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.hero__kicker span { color: var(--gold); font-size: 10px; }
+.hero h1 { margin-top: 28px; font: 500 clamp(44px, 5.4vw, 84px)/1.02 var(--serif); letter-spacing: -.01em; }
+.hero h1 em { font-style: italic; color: var(--olive); }
+.hero__sub { margin-top: 28px; max-width: 46ch; font-size: 17px; line-height: 1.65; }
+.hero__actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
+.btn svg { width: 14px; height: 14px; }
+.hero__svc { display: inline-flex; align-items: center; gap: 18px; margin-top: 48px; padding: 10px 18px 10px 12px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; align-self: flex-start; transition: background-color .25s var(--ease), border-color .25s var(--ease); }
+.hero__svc:hover { background: var(--sand); border-color: rgba(35, 59, 44, .35); }
+.hero__truck { width: 84px; height: auto; fill: none; stroke: var(--forest); stroke-width: 1.6; stroke-linejoin: round; }
+.hero__truck .t { stroke-width: 1; opacity: .55; }
+.hero__svc span { font: 500 22px/1 var(--serif); }
+.hero__svc .arr { width: 16px; height: 16px; transition: transform .25s var(--ease); }
+.hero__svc:hover .arr { transform: translateX(4px); }
+.hero__cats { display: flex; flex-wrap: wrap; row-gap: 6px; margin: 20px 0 0 -25px; clip-path: inset(0 0 0 25px); font: 500 16px/1.4 var(--sans); }
+.hero__cats li { position: relative; padding-left: 25px; }
+.hero__cats li::before { content: "|"; position: absolute; left: 9px; color: var(--gold); }
+.hero__media { position: relative; min-height: 420px; }
+.hero__media picture, .hero__media > picture img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero__media > picture img { object-fit: cover; object-position: 50% 55%; }
+.hero__card { position: absolute; right: clamp(16px, 3vw, 40px); bottom: clamp(16px, 3vw, 40px); display: flex; align-items: center; gap: 20px; padding: 18px 18px 18px 26px; background: var(--cream); border-radius: 20px; text-decoration: none; box-shadow: 0 10px 30px rgba(20, 30, 22, .18); transition: transform .3s var(--ease); }
+.hero__card:hover { transform: translateY(-3px); }
+.hero__card-text { display: grid; gap: 4px; }
+.hero__card small { font: 500 12px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.hero__card strong { font: 500 30px/1.05 var(--serif); font-weight: 500; }
+.hero__card-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; font: 500 13px/1 var(--sans); letter-spacing: .06em; text-transform: uppercase; }
+.hero__card-link svg { width: 14px; height: 14px; }
+.hero__card img { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; }
+.hero__feats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-block: 40px 44px; }
+.hero__feats li { display: flex; align-items: center; gap: 16px; justify-content: center; }
+.hero__feats svg { width: 40px; height: 40px; flex: none; fill: none; stroke: var(--olive); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.hero__feats strong { display: block; font: 500 19px/1.25 var(--serif); font-size: 21px; }
+.hero__feats span { display: block; font-size: 15px; color: var(--muted); }
+@media (max-width: 1199px) { .hero__feats li { justify-content: flex-start; } }
+@media (max-width: 1023px) {
+  .hero__grid { grid-template-columns: 1fr; min-height: 0; }
+  .hero__text { padding: 48px var(--gut) 48px; }
+  .hero__media { min-height: 0; aspect-ratio: 4 / 3; }
+  .hero__feats { grid-template-columns: 1fr 1fr; row-gap: 28px; }
+}
 @media (max-width: 639px) {
-  .hero__row { grid-template-columns: 1fr; padding-inline: var(--gut); padding-bottom: 64px; }
-  .seal { width: 112px; height: 112px; right: 12px; bottom: -48px; }
-  .seal__arrow { width: 26px; height: 26px; }
-  .halo { left: -4%; width: 108%; top: -34px; }
-  .hero__row .side { display: none; }
-  .hero__row .main img { aspect-ratio: 1; }
+  .hero h1 { font-size: clamp(38px, 11vw, 52px); }
   .hero__actions .btn { flex: 1 1 100%; }
+  .hero__media { aspect-ratio: 4 / 5; }
+  .hero__card { left: 16px; right: 16px; justify-content: space-between; padding: 14px 14px 14px 20px; }
+  .hero__card strong { font-size: 24px; }
+  .hero__card img { width: 76px; height: 76px; }
+  .hero__cats { font-size: 15px; }
+  .hero__cats { margin-left: -19px; clip-path: inset(0 0 0 19px); }
+  .hero__cats li { padding-left: 19px; }
+  .hero__cats li::before { left: 6px; }
+  .hero__feats { grid-template-columns: 1fr; padding-block: 32px; }
 }
 
 /* intro: label and heading left, words right */
@@ -149,7 +173,7 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 .svc { grid-column: 1 / span 8; }
 .svc li { display: grid; grid-template-columns: 56px minmax(0, 1fr); align-items: baseline; padding: 22px 0; border-bottom: 1px solid var(--line); position: relative; transition: opacity .25s var(--ease), padding-left .35s var(--ease); }
 .svc li::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 0; background: var(--gold); transition: width .5s var(--ease); }
-.svc__n { font: 500 13px/1 var(--sans); letter-spacing: .08em; color: #9a7a35; }
+.svc__n { font: 500 13px/1 var(--sans); letter-spacing: .08em; color: #775a1c; }
 @media (hover: hover) { .svc li:hover { padding-left: 16px; } .svc li:hover::after { width: 100%; } }
 .svc li:first-child { padding-top: 0; }
 .svc h3 { font: 500 clamp(26px, 3.1vw, 44px)/1.05 var(--serif); text-transform: uppercase; }
@@ -263,9 +287,9 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 .sizer__b:hover .box { fill: rgba(53, 68, 47, .14); }
 .sizer__b[aria-pressed="true"] .box { fill: var(--olive); }
 .sizer__b[aria-pressed="true"] .ribs path { stroke: var(--cream); opacity: .5; }
-.sizer__b[aria-pressed="true"] span { color: #7d6226; }
+.sizer__b[aria-pressed="true"] span { color: #775a1c; }
 .sizer__b[aria-pressed="true"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--gold); }
-.sizer__person { position: relative; padding-bottom: 44px; color: #9a7a35; flex: none; }
+.sizer__person { position: relative; padding-bottom: 44px; color: #775a1c; flex: none; }
 .sizer__person svg { display: block; width: calc(16 * var(--k) * 1px); height: auto; fill: currentColor; margin-bottom: calc(8 * var(--k) * 1px * .0 + 0px); }
 .sizer__person span { position: absolute; left: 0; bottom: 8px; font: 500 12px/1 var(--sans); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
 .sizer__dims { margin-top: 10px; color: var(--muted); }
@@ -278,7 +302,7 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 @media (max-width: 899px) { .sizer__row { --k: .68; gap: 8px; } .sizer__detail { grid-template-columns: 1fr; gap: 16px; } .sizer__detail .arrow-link { justify-self: start; } }
 @media (max-width: 699px) { .sizer__row { --k: .5; } }
 @media (max-width: 599px) { .sizer__person span { font-size: 10px; } }
-@media (max-width: 599px) { .sizer__row { --k: .34; gap: 5px; } .sizer__b { padding-bottom: 36px; min-width: 40px; } .sizer__b span { font-size: 18px; } }
+@media (max-width: 599px) { .sizer__row { --k: .34; gap: 5px; } .sizer__b { padding-bottom: 36px; min-width: 44px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; } .sizer__b span { font-size: 18px; } }
 
 /* questions */
 .faq-wrap { border-top: 0; }
@@ -365,13 +389,13 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 
 /* load: the hero enters once; nothing else moves on scroll */
 @media (prefers-reduced-motion: no-preference) {
-  .hero .display, .hero__sub, .hero__tags, .hero__actions { animation: rise .9s var(--ease) both; }
-  .hero__sub { animation-delay: .08s; } .hero__tags { animation-delay: .14s; } .hero__actions { animation-delay: .2s; }
-  .hero__row { animation: fade 1.2s var(--ease) .15s both; }
+  .hero__text > * { animation: rise .9s var(--ease) both; }
+  .hero__text > :nth-child(2) { animation-delay: .06s; } .hero__text > :nth-child(3) { animation-delay: .12s; } .hero__text > :nth-child(n+4) { animation-delay: .18s; }
+  .hero__media { animation: fade 1.2s var(--ease) .1s both; }
 }
 @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
 @keyframes fade { from { opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .marquee__track, .seal__ring { animation: none; } *, *::before, *::after { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } *, *::before, *::after { transition: none !important; } }
 </style>
 </head>
 <body>
@@ -379,17 +403,18 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 
 <header class="nav">
   <div class="wrap nav__bar">
-    <a class="nav__logo" href="#top"><img src="img/logo-mark.png" alt="" width="224" height="160">Halo Hauling</a>
-    <nav class="nav__links caps" id="menu" aria-label="Main">
+    <a class="nav__logo" href="#top"><img src="img/logo-wordmark.png" alt="Halo Hauling" width="520" height="188"></a>
+    <nav class="nav__links" id="menu" aria-label="Main">
+      <a href="#top" aria-current="page">Home</a>
       <a href="#services">Services</a>
-      <a href="#process">Process</a>
-      <a href="#sizes">Sizes</a>
-      <a href="#areas">Areas</a>
-      <a href="#questions">Questions</a>
+      <a href="#areas">Locations</a>
+      <a href="#sizes">Pricing</a>
+      <a href="#about">About</a>
+      <a href="#quote">Order Now</a>
     </nav>
     <div class="nav__end">
-      <a class="nav__phone caps" href="tel:+14084421117">408-442-1117</a>
-      <a class="btn btn--fill" href="#quote">Get a quote</a>
+      <a class="btn btn--fill" href="#quote">Contact us</a>
+      <a class="nav__phone" href="tel:+14084421117"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>(408) 442-1117</a>
       <button class="nav__toggle" type="button" aria-controls="menu" aria-expanded="false" aria-label="Menu">
         <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 6h14M2 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </button>
@@ -399,33 +424,35 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 
 <main id="top">
   <section class="hero" aria-labelledby="hero-h">
-    <div class="wrap">
-      <h1 class="display" id="hero-h">Bay Area roll&#8209;off <br class="lg"><em>D</em>umpsters</h1>
-      <p class="hero__sub">Roll-off dumpster rentals and construction debris solutions for homeowners, contractors and businesses.</p>
-      <p class="hero__tags caps">10 to 40 cubic yards &middot; Mon to Sat, 6 am to 5 pm &middot; Price on request</p>
-      <div class="hero__actions">
-        <a class="btn btn--fill" href="#quote">Get a quote</a>
-        <a class="btn btn--line" href="tel:+14084421117">Call 408-442-1117</a>
+    <div class="hero__grid">
+      <div class="hero__text">
+        <p class="hero__kicker"><span aria-hidden="true">&#9670;</span>Bay Area dumpster rentals &middot; San Jose based</p>
+        <h1 id="hero-h">A Cleaner Start <br>To Every <em>Project.</em></h1>
+        <p class="hero__sub">Fast delivery, transparent pricing, and dependable service for projects of every size. Proudly serving homeowners, contractors, and businesses throughout the Bay Area.</p>
+        <div class="hero__actions">
+          <a class="btn btn--fill" href="#sizes">Rent your dumpster<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
+          <a class="btn btn--line" href="#quote">Get a quote</a>
+        </div>
+        <a class="hero__svc" href="#services"><svg class="hero__truck" viewBox="0 0 120 50" aria-hidden="true"><path d="M8 10h66l-4 22H12z"/><path class="t" d="M20 13v16M32 13v16M44 13v16M56 13v16"/><path d="M4 34h74v4H4z"/><path d="M78 16h16l11 13v9H78z"/><path class="t" d="M83 20h8.5l7 8.5H83z"/><circle cx="18" cy="42" r="5"/><circle cx="31" cy="42" r="5"/><circle cx="96" cy="42" r="5"/></svg><span>Our services</span><svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
+        <ul class="hero__cats"><li>Residential</li><li>Commercial</li><li>Construction &amp; Demolition</li><li>General Waste</li><li>Heavy Debris</li></ul>
       </div>
-    </div>
-    <div class="hero__row">
-      <div class="side side--l"><img src="img/hero-left-dock.webp" alt="" width="620" height="795" decoding="async"></div>
-      <div class="main">
-        <svg class="halo" viewBox="0 0 1000 240" aria-hidden="true"><path d="M4 236 C 180 -70, 820 -70, 996 236"/></svg>
-        <picture><source media="(max-width: 639px)" srcset="img/hero-truck-phone.webp"><img src="img/hero-truck.webp" alt="The Halo Hauling hook-lift truck carrying a blue roll-off dumpster, the Halo logo on its mud flap" width="1201" height="686" fetchpriority="high"></picture>
-        <a class="seal" href="#quote" aria-label="Get a quote">
-          <svg class="seal__ring" viewBox="0 0 200 200" aria-hidden="true">
-            <defs><path id="seal-p" d="M100 100 m-74 0 a74 74 0 1 1 148 0 a74 74 0 1 1 -148 0"/></defs>
-            <text><textPath href="#seal-p" textLength="452">GET A QUOTE &#10022; HALO HAULING &#10022; BAY AREA &#10022;</textPath></text>
-          </svg>
-          <svg class="seal__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M9 6h9v9"/></svg>
+      <div class="hero__media">
+        <picture><source media="(max-width: 1023px)" srcset="img/hero-site-820.webp"><img src="img/hero-site-1400.webp" alt="An excavator loading debris into a blue roll-off dumpster on a construction site, with a loaded truck in front" width="1400" height="1742" fetchpriority="high"></picture>
+        <a class="hero__card" href="#jobs">
+          <span class="hero__card-text"><small>Big or small, we haul</small><strong>On the job</strong><span class="hero__card-link">See recent jobs<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span></span>
+          <img src="img/job-3.webp" alt="" width="640" height="853" loading="lazy" decoding="async">
         </a>
       </div>
-      <div class="side side--r"><img src="img/hero-right-curb.webp" alt="" width="620" height="795" decoding="async"></div>
     </div>
+    <ul class="hero__feats wrap">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7h11v9H2zM13 10h4l3 3v3h-7z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg><div><strong>Fast delivery</strong><span>Same day delivery</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M15 8.6c-.6-.9-1.8-1.4-3-1.4-1.7 0-3 .9-3 2.3 0 3.2 6 1.6 6 4.8 0 1.4-1.4 2.4-3.1 2.4-1.3 0-2.5-.6-3.1-1.6M12 5.5v13"/></svg><div><strong>Flat rate pricing</strong><span>No hidden fees</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="1.5"/><path d="M3 10h18M8 3v4M16 3v4M7.5 14h2M11 14h2M14.5 14h2M7.5 17.5h2M11 17.5h2"/></svg><div><strong>Flexible rentals</strong><span>Made to work for you</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8 4.5 5.6v6c0 4.6 3.1 8.3 7.5 9.6 4.4-1.3 7.5-5 7.5-9.6v-6z"/><path d="m8.6 12 2.4 2.4 4.6-4.8"/></svg><div><strong>Reliable service</strong><span>Every haul, done right</span></div></li>
+    </ul>
   </section>
 
-  <section class="intro" aria-labelledby="intro-h">
+  <section class="intro" id="about" aria-labelledby="intro-h">
     <div class="wrap split">
       <div class="intro__head">
         <p class="label"><span>01</span>About Halo Hauling</p>
