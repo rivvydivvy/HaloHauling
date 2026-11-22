@@ -120,7 +120,7 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 .hero__media picture, .hero__media > picture img { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero__media > picture img { object-fit: cover; object-position: 50% 35%; }
 @media (min-width: 1024px) {
-  .hero__media { border-radius: 20% 0 0 20% / 50% 0 0 50%; }
+  .hero__media { clip-path: ellipse(100% 92% at 100% 50%); }
 }
 .hero__card { position: absolute; right: clamp(16px, 3vw, 40px); bottom: clamp(16px, 3vw, 40px); display: flex; align-items: center; gap: 20px; padding: 18px 18px 18px 26px; background: var(--cream); border-radius: 20px; text-decoration: none; box-shadow: 0 10px 30px rgba(20, 30, 22, .18); transition: transform .3s var(--ease); }
 .hero__card:hover { transform: translateY(-3px); }
