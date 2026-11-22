@@ -122,6 +122,7 @@ section { padding-block: clamp(80px, 11vw, 160px); }
 @media (min-width: 1024px) {
   .hero__media { margin: 24px 24px 24px 0; border-radius: 0 28px 28px 0; }
   .hero__media > picture { clip-path: ellipse(140% 118% at 140% 50%); }
+  .hero__media.is-shaped { border-radius: 0; }
 }
 .hero__card { position: absolute; right: clamp(16px, 3vw, 40px); bottom: clamp(16px, 3vw, 40px); display: flex; align-items: center; gap: 20px; padding: 18px 18px 18px 26px; background: var(--cream); border-radius: 20px; text-decoration: none; box-shadow: 0 10px 30px rgba(20, 30, 22, .18); transition: transform .3s var(--ease); }
 .hero__card:hover { transform: translateY(-3px); }
@@ -764,6 +765,37 @@ section { padding-block: clamp(80px, 11vw, 160px); }
     p.setAttribute('aria-label', on ? 'Play the moving text' : 'Pause the moving text');
     p.innerHTML = on ? icons.play : icons.pause;
   });
+
+
+  // hero photo: the curved left edge with every corner rounded, rebuilt to the photo's size
+  const media = document.querySelector('.hero__media'), pic = media && media.querySelector('picture');
+  const shape = () => {
+    if (!pic) return;
+    if (!matchMedia('(min-width: 1024px)').matches) { pic.style.clipPath = ''; media.classList.remove('is-shaped'); return; }
+    const W = pic.offsetWidth, H = pic.offsetHeight, R = 28;
+    const cx = 1.4 * W, rx = 1.4 * W, ry = 1.18 * H, cy = H / 2;
+    const xAt = y => cx - rx * Math.sqrt(Math.max(0, 1 - ((y - cy) / ry) ** 2));
+    const pts = []; const corners = [];
+    const N = 80;
+    for (let i = 0; i <= N; i++) { const y = H - (H * i) / N; pts.push([xAt(y), y]); }
+    corners.push(N); // top end of the curve
+    pts.push([W, 0]); corners.push(pts.length - 1);
+    pts.push([W, H]); corners.push(pts.length - 1);
+    corners.push(0); // bottom end of the curve
+    const walk = (idx, dir, d) => { let i = idx, left = d;
+      while (true) { const j = (i + dir + pts.length) % pts.length; const [ax, ay] = pts[i], [bx, by] = pts[j]; const seg = Math.hypot(bx - ax, by - ay);
+        if (seg >= left) { const t = left / seg; return { p: [ax + (bx - ax) * t, ay + (by - ay) * t], i }; } left -= seg; i = j; } };
+    const repl = new Map();
+    for (const c of corners) { const A = walk(c, -1, R), B = walk(c, 1, R), C = pts[c], arc = [];
+      for (let k = 0; k <= 10; k++) { const t = k / 10, u = 1 - t; arc.push([u * u * A.p[0] + 2 * u * t * C[0] + t * t * B.p[0], u * u * A.p[1] + 2 * u * t * C[1] + t * t * B.p[1]]); }
+      repl.set(c, { from: A.i, to: B.i, arc }); }
+    const out = []; const skip = new Set();
+    for (const [c, r] of repl) { let i = (r.from + 1) % pts.length; while (i !== (r.to + 1) % pts.length) { skip.add(i); i = (i + 1) % pts.length; } }
+    for (let i = 0; i < pts.length; i++) { for (const [c, r] of repl) if (i === (r.from + 1) % pts.length) out.push(...r.arc); if (!skip.has(i)) out.push(pts[i]); }
+    pic.style.clipPath = 'polygon(' + out.map(([x, y]) => x.toFixed(1) + 'px ' + y.toFixed(1) + 'px').join(',') + ')';
+    media.classList.add('is-shaped');
+  };
+  shape(); addEventListener('resize', shape); addEventListener('load', shape);
 
   const sz = document.querySelector('[data-sizer]');
   if (sz) {
