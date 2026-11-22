@@ -25,3 +25,13 @@
 - [ ] More photos (owner will upload to GitHub)
 - [ ] Phase 2: C&D recycling, LEED reports, Green Halo support; ongoing service for businesses
 - [ ] Launch: hosting, connect gohalohauling.com, Google Business Profile, website link in Instagram bio
+
+## Later: split the site into separate pages (requested, not started)
+Goal: make the top nav useful instead of one long scroll.
+- Home: hero, promises band, Hauling made easy, short previews linking out
+- Services: what we haul + materials (accepted / prohibited)
+- Locations: service-area map + cities
+- Pricing: size picker ("Quote this size" pre-fills the size on the order form)
+- About: your story, job gallery, questions
+- Order Now: quote form (the "Contact us" button goes here too)
+- Same sand nav bar and footer on every page, current page underlined
