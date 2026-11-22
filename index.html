@@ -232,13 +232,14 @@ section { padding-block: clamp(80px, 11vw, 160px); }
   /* on scroll each scene plays a set number of times and comes to rest */
   .step.is-play .bob { animation: hh-bob 1s ease-in-out 2; }
   .step.is-play .rocks .r { animation: hh-rock 1.2s cubic-bezier(.5, 0, .75, 0) 1; }
-  .step.is-play .pile { animation: hh-pile 1.2s ease-in-out 2; }
+  .step.is-play .pile { animation: hh-pile 1.2s ease-in-out 1.5; }
   .step.is-play .body { animation: hh-rumble .26s ease-in-out 8 alternate; }
   .step.is-play .wheel { animation: hh-spin .5s linear 4; transform-origin: center; }
   .step.is-play .speed { animation: hh-speed .5s linear 4; }
   .step.is-play .bob-x { animation: hh-nudge .8s ease-in-out 2.5; }
   :is(.step:hover, .step.is-play) .rocks .r2 { animation-delay: .3s; } :is(.step:hover, .step.is-play) .rocks .r3 { animation-delay: .6s; }
-  .step.is-play { animation: hh-pop .9s cubic-bezier(.34, 1.56, .64, 1) both; border-color: var(--gold); }
+  .step.is-play { transform: translateY(-14px) scale(1.03); border-color: var(--gold); background: rgba(243, 234, 224, .07); transition-duration: .45s; transition-timing-function: cubic-bezier(.34, 1.56, .64, 1); }
+  .step.is-play .step__art svg { transform: translateY(-5px); }
 }
 @media (hover: none) { .step:hover .step__art * { animation: none; } }
 .step__art .drop { transform-box: view-box; transform-origin: 0px 68px; transform: translate(10px, 0) rotate(-13.4deg); }
@@ -815,17 +816,29 @@ section { padding-block: clamp(80px, 11vw, 160px); }
   });
 
 
-  // "Hauling made easy": when the arches come into view, each one pops and plays its scene in turn
+  // "Hauling made easy": when the arches come into view, each one lifts, plays its scene to the end, settles, then the next
   const stepList = document.querySelector('.steps');
   if (stepList && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    let last = 0;
+    const wait = ms => new Promise(r => setTimeout(r, ms));
+    let running = false;
+    const playAll = async () => {
+      if (running) return; running = true;
+      for (const st of stepList.querySelectorAll('.step')) {
+        st.classList.add('is-play');
+        await wait(60);
+        const scenes = st.getAnimations({ subtree: true }).filter(a => a instanceof CSSAnimation);
+        await Promise.all(scenes.map(a => a.finished.catch(() => {})));
+        await wait(250);
+        st.classList.remove('is-play');
+        await wait(300);
+      }
+      running = false;
+    };
+    let seen = false;
     new IntersectionObserver(es => es.forEach(e => {
-      if (!e.isIntersecting || Date.now() - last < 6000) return; last = Date.now();
-      stepList.querySelectorAll('.step').forEach((st, i) => {
-        setTimeout(() => { st.classList.remove('is-play'); void st.offsetWidth; st.classList.add('is-play'); }, i * 650);
-        setTimeout(() => st.classList.remove('is-play'), i * 650 + 2400);
-      });
-    }), { threshold: .45 }).observe(stepList);
+      if (e.isIntersecting && !seen) { seen = true; playAll(); }
+      if (!e.isIntersecting && e.intersectionRatio === 0) seen = false;
+    }), { threshold: [0, .45] }).observe(stepList);
   }
 
   const sz = document.querySelector('[data-sizer]');
